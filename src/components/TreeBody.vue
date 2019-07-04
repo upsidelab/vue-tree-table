@@ -1,6 +1,8 @@
 <template>
     <div>
-      <tree-row v-for="rowData in data" v-bind:rowData="rowData" v-bind:defaultOrder="defaultOrder" />
+      <slot v-for="rowData in data" :rowData="rowData" name="rowTemplate">
+        <tree-row :rowData="rowData" v-bind:defaultOrder="defaultOrder" />
+      </slot>
     </div>
 </template>
 

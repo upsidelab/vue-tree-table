@@ -4,18 +4,20 @@
       <!--<column-header />-->
       <!--<column-header />-->
     <!--</header>-->
-    <!--<body-template>-->
-      <!--<row-template />-->
-    <!--</body-template>-->
+    <template slot="rowTemplate" slot-scope="rowProps">
+      <tree-row-with-order :rowData="rowProps.rowData" :order="['surname', 'name']" />
+    </template>
     <!--<footer />-->
   </tree-table>
 </template>
 
 <script>
 import TreeTable from './TreeTable'
+import TreeRowWithOrder from './TreeRowWithOrder'
+
 export default {
   name: 'HelloWorld',
-  components: {TreeTable},
+  components: {TreeTable, TreeRowWithOrder},
   props: {
   },
   data: function(){
