@@ -1,10 +1,16 @@
 <template>
+  <div>
+    <div class="row">
+      <slot name="headerTemplate"></slot>
+    </div>
+
     <TreeBody v-bind:data="data">
       <template slot="rowTemplate" slot-scope="rowProps">
         <slot name="rowTemplate" :rowData="rowProps.rowData">
         </slot>
       </template>
     </TreeBody>
+  </div>
 </template>
 
 <script>
@@ -21,5 +27,9 @@
 </script>
 
 <style scoped>
-
+  .row{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
 </style>

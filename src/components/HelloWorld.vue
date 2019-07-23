@@ -1,23 +1,26 @@
 <template>
   <tree-table class="table" v-bind:data="tableData">
-    <!--<header>-->
-      <!--<column-header />-->
-      <!--<column-header />-->
-    <!--</header>-->
+
+    <template slot="headerTemplate">
+      <TreeColumnHeader label="Surname" />
+      <TreeColumnHeader label="Name" />
+    </template>
+
     <template slot="rowTemplate" slot-scope="rowProps">
       <tree-row-with-order :rowData="rowProps.rowData" :order="['surname', 'name']" />
     </template>
-    <!--<footer />-->
+
   </tree-table>
 </template>
 
 <script>
 import TreeTable from './TreeTable'
 import TreeRowWithOrder from './TreeRowWithOrder'
+import TreeColumnHeader from './TreeColumnHeader'
 
 export default {
   name: 'HelloWorld',
-  components: {TreeTable, TreeRowWithOrder},
+  components: {TreeColumnHeader, TreeTable, TreeRowWithOrder},
   props: {
   },
   data: function(){
