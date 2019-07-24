@@ -1,17 +1,27 @@
 <template>
-    <div class="row">
-      <div class="cell" v-for="key in defaultOrder" >
-        {{ rowData[key] }}
-      </div>
+  <div class="row">
+    <div
+      v-for="key in defaultOrder"
+      :key="key"
+      class="cell"
+    >
+      {{ rowData[key] }}
     </div>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'TreeRow',
     props: {
-      rowData: Object,
-      defaultOrder: Array
+      rowData: {
+        type: Object,
+        default: () => { return {} }
+      },
+      defaultOrder: {
+        type: Array,
+        default: () => { return {} }
+      }
     }
   }
 </script>

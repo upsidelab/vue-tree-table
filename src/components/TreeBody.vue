@@ -1,9 +1,17 @@
 <template>
-    <div>
-      <slot v-for="rowData in data" :rowData="rowData" name="rowTemplate">
-        <tree-row :rowData="rowData" v-bind:defaultOrder="defaultOrder" />
-      </slot>
-    </div>
+  <div>
+    <slot
+      v-for="rowData in data"
+      :rowData="rowData"
+      :defaultOrder="columns"
+      name="rowTemplate"
+    >
+      <tree-row
+        :row-data="rowData"
+        :default-order="columns"
+      />
+    </slot>
+  </div>
 </template>
 
 <script>
@@ -12,15 +20,14 @@
     name: 'TreeBody',
     components: {TreeRow},
     props: {
-      data: Array
-    },
-    computed: {
-      defaultOrder: function(){
-        if( this.data.length == 0 ){
-          return []
-        }
-        return Object.keys(this.data[0])
-      }
+      data: {
+        type: Array,
+        default: function(){ return [] }
+      },
+      columns: {
+        type: Array,
+        default: function(){ return [] }
+      },
     }
   }
 </script>

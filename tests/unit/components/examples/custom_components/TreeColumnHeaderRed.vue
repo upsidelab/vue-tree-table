@@ -6,12 +6,9 @@
 
 <script>
   export default {
-    name: 'TreeColumnHeader',
+    name: 'TreeColumnHeaderRed',
     props: {
-      columnData: {
-        type: Object,
-        default: () => { return {} }
-      },
+      columnData: Object,
     }
   }
 </script>
@@ -25,6 +22,6 @@
     box-sizing: border-box;
     margin-top: -1px;
     margin-left: -1px;
-    background-color: aliceblue;
+    background-color: palevioletred;
   }
 </style>

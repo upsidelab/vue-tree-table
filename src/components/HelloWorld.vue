@@ -1,31 +1,31 @@
 <template>
-  <tree-table class="table" v-bind:data="tableData">
+  <tree-table
+    class="table"
+    :columns="columns"
+    :data="tableData"
+  >
+    <!--<template slot="headerTemplate" slot-scope="headerProps">-->
+    <!--<TreeColumnHeaderRed :columnData="headerProps.columnData" />-->
+    <!--</template>-->
 
-    <template slot="headerTemplate">
-      <TreeColumnHeader label="Surname" />
-      <TreeColumnHeader label="Name" />
-    </template>
-
-    <template slot="rowTemplate" slot-scope="rowProps">
-      <tree-row-with-order :rowData="rowProps.rowData" :order="['surname', 'name']" />
-    </template>
-
+    <!--<template slot="rowTemplate" slot-scope="rowProps">-->
+    <!--<tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
+    <!--</template>-->
   </tree-table>
 </template>
 
 <script>
 import TreeTable from './TreeTable'
-import TreeRowWithOrder from './TreeRowWithOrder'
-import TreeColumnHeader from './TreeColumnHeader'
 
 export default {
   name: 'HelloWorld',
-  components: {TreeColumnHeader, TreeTable, TreeRowWithOrder},
+  components: {TreeTable},
   props: {
   },
   data: function(){
     return {
-      tableData: [{name: 'Ziuta', surname: 'Kozak' }, {name: 'Koziolek', surname: 'Matolek'}]
+      tableData: [{name: 'Ziuta', surname: 'Kozak' }, {name: 'Koziolek', surname: 'Matolek'}],
+      columns: [{label: 'Name', id: 'name'}, {label: 'Surname', id: 'surname'}]
     }
   }
 }

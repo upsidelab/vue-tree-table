@@ -1,5 +1,5 @@
 <template>
-  <tree-table class="table" v-bind:data="tableData">
+  <tree-table class="table" :data="tableData" :columns="columns">
   </tree-table>
 </template>
 
@@ -11,7 +11,8 @@
     name: 'HelloWorld',
     components: {TreeTable, TreeRow},
     props: {
-      tableData: Array
+      tableData: Array,
+      columns: Array
     }
   }
 </script>

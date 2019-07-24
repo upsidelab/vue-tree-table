@@ -1,13 +1,28 @@
 <template>
   <div>
     <div class="row">
-      <slot name="headerTemplate"></slot>
+      <slot
+        v-for="column in columns"
+        :columnData="column"
+        name="headerTemplate"
+      >
+        <TreeColumnHeader :column-data="column" />
+      </slot>
     </div>
 
-    <TreeBody v-bind:data="data">
-      <template slot="rowTemplate" slot-scope="rowProps">
-        <slot name="rowTemplate" :rowData="rowProps.rowData">
-        </slot>
+    <TreeBody
+      :data="data"
+      :columns="columnsOrder"
+    >
+      <template
+        slot="rowTemplate"
+        slot-scope="rowProps"
+      >
+        <slot
+          name="rowTemplate"
+          :defaultOrder="rowProps.defaultOrder"
+          :rowData="rowProps.rowData"
+        />
       </template>
     </TreeBody>
   </div>
@@ -15,13 +30,25 @@
 
 <script>
   import TreeBody from './TreeBody'
-  import TreeRowWithOrder from './TreeRowWithOrder'
+  import TreeColumnHeader from './TreeColumnHeader'
 
   export default {
     name: 'TreeTable',
-    components: {TreeBody, TreeRowWithOrder},
+    components: {TreeBody, TreeColumnHeader},
     props: {
-      data: Array
+      data: {
+        type: Array,
+        default: () => { return {} }
+      },
+      columns: {
+        type: Array,
+        default: () => { return [] }
+      }
+    },
+    computed: {
+      columnsOrder(){
+        return this.columns.map(column => column.id);
+      }
     }
   }
 </script>
