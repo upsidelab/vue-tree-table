@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "./node_modules/.bin/eslint --ext .js,.vue src",
+    "lint-fix": "./node_modules/.bin/eslint --fix --ext .js,.vue src",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
