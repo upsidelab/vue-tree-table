@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'TreeRow',
+    name: 'TreeNode',
     props: {
       rowData: {
         type: Object,

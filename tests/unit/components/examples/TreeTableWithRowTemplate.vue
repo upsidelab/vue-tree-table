@@ -1,18 +1,18 @@
 <template>
   <tree-table class="table" :data="tableData" :columns="columns">
     <template slot="rowTemplate" slot-scope="rowProps">
-      <tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder" />
+      <tree-node-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder" />
     </template>
   </tree-table>
 </template>
 
 <script>
   import TreeTable from '../../../../src/components/TreeTable'
-  import TreeRowRed from './custom_components/TreeRowRed'
+  import TreeNodeRed from './custom_components/TreeNodeRed'
 
   export default {
     name: 'HelloWorld',
-    components: {TreeTable, TreeRowRed},
+    components: {TreeTable, TreeNodeRed},
     props: {
       tableData: Array,
       columns: Array

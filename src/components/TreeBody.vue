@@ -6,7 +6,7 @@
       :defaultOrder="columns"
       name="rowTemplate"
     >
-      <tree-row
+      <tree-node
         :row-data="rowData"
         :default-order="columns"
       />
@@ -15,10 +15,10 @@
 </template>
 
 <script>
-  import TreeRow from './TreeRow'
+  import TreeNode from './TreeNode'
   export default {
     name: 'TreeBody',
-    components: {TreeRow},
+    components: {TreeNode},
     props: {
       data: {
         type: Array,

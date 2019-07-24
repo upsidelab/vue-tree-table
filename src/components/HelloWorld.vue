@@ -9,7 +9,7 @@
     <!--</template>-->
 
     <!--<template slot="rowTemplate" slot-scope="rowProps">-->
-    <!--<tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
+    <!--<tree-node-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
     <!--</template>-->
   </tree-table>
 </template>
@@ -24,7 +24,14 @@ export default {
   },
   data: function(){
     return {
-      tableData: [{name: 'Ziuta', surname: 'Kozak' }, {name: 'Koziolek', surname: 'Matolek'}],
+      tableData: [
+        {name: 'Ziuta', surname: 'Kozak', children: [
+          {name: 'Czerwony Kapturek', surname: 'Kozak'}
+          ]},
+        {name: 'Koziolek', surname: 'Matolek', children: [
+            { name: 'Timon', surname: 'Matolek'}
+          ]}
+        ],
       columns: [{label: 'Name', id: 'name'}, {label: 'Surname', id: 'surname'}]
     }
   }
