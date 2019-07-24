@@ -22,6 +22,8 @@
     flex-grow: 1;
     flex-basis: 0;
     border: solid 0.5px silver;
+    border-left: none;
+    border-right: none;
     box-sizing: border-box;
     margin-top: -1px;
     margin-left: -1px;
