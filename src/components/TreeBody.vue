@@ -7,6 +7,12 @@
       name="rowTemplate"
     >
       <tree-node
+        v-if="!isLeaf(rowData)"
+        :row-data="rowData"
+        :default-order="columns"
+      />
+      <tree-leaf
+        v-if="isLeaf(rowData)"
         :row-data="rowData"
         :default-order="columns"
       />
@@ -16,9 +22,12 @@
 
 <script>
   import TreeNode from './TreeNode'
+  import TreeLeaf from './TreeLeaf'
+  import isLeafFunc from '../utils/isLeaf'
+
   export default {
     name: 'TreeBody',
-    components: {TreeNode},
+    components: {TreeLeaf, TreeNode},
     props: {
       data: {
         type: Array,
@@ -28,6 +37,11 @@
         type: Array,
         default: function(){ return [] }
       },
+    },
+    methods: {
+      isLeaf(rowData){
+        return isLeafFunc(rowData)
+      }
     }
   }
 </script>

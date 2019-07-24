@@ -9,7 +9,7 @@
     <!--</template>-->
 
     <!--<template slot="rowTemplate" slot-scope="rowProps">-->
-    <!--<tree-node-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
+    <!--<tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
     <!--</template>-->
   </tree-table>
 </template>
