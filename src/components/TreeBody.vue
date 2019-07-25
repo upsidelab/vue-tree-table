@@ -9,11 +9,13 @@
       <tree-node
         v-if="!isLeaf(rowData)"
         :row-data="rowData"
+        :depth="0"
         :default-order="columns"
       />
       <tree-leaf
         v-if="isLeaf(rowData)"
         :row-data="rowData"
+        :depth="0"
         :default-order="columns"
       />
     </slot>

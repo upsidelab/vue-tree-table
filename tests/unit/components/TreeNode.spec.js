@@ -105,5 +105,23 @@ describe('TreeNode', () => {
         expect(wrapper.contains(TreeNode)).toBeTruthy()
       })
     })
+
+    it('sets children depth', () => {
+      const rowData = { name: 'Simba', children: [{name: 'Chiara'}] }
+      const defaultOrder = ['name']
+
+      const wrapper = mount(TreeNode, {
+        propsData: {
+          rowData,
+          defaultOrder,
+          depth: 5,
+        }
+      })
+
+      wrapper.setData({isOpen: true})
+
+      const child = wrapper.find(TreeLeaf)
+      expect(child.vm.depth).toBe(6)
+    })
   })
 })

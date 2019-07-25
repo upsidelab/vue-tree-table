@@ -58,5 +58,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    padding-left: 15px;
+    border: solid 0.5px silver;
+    border-left: none;
+    border-right: none;
+    margin-top: -1px;
   }
 </style>

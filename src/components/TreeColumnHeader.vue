@@ -26,7 +26,7 @@
     border-right: none;
     box-sizing: border-box;
     margin-top: -1px;
-    margin-left: -1px;
     background-color: aliceblue;
+    text-align: left;
   }
 </style>
