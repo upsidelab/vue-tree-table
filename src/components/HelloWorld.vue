@@ -29,7 +29,7 @@ export default {
           {name: 'Czerwony Kapturek', surname: 'Kozak'}
           ]},
         {name: 'Koziolek', surname: 'Matolek', children: [
-            { name: 'Timon', surname: 'Matolek'}
+            { name: 'Timon', surname: 'Matolek', children: [ {name: 'Timon Junior', surname: 'Matolek'} ]}
           ]}
         ],
       columns: [{label: 'Name', id: 'name'}, {label: 'Surname', id: 'surname'}]

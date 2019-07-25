@@ -1,25 +1,53 @@
 <template>
   <div>
     <div class="row">
+      <div class="cell">
+        <div
+          class="open-button"
+          @click="toggle"
+        >
+          <div
+            v-if="!isOpen"
+            class="closed"
+          >
+            >
+          </div>
+          <div
+            v-if="isOpen"
+            class="opened"
+          >
+            v
+          </div>
+        </div>
+        <div>
+          {{ rowData[columnWithOpenButton] }}
+        </div>
+      </div>
       <div
-        v-for="key in defaultOrder"
+        v-for="key in reguralColumns"
         :key="key"
         class="cell"
       >
         {{ rowData[key] }}
       </div>
     </div>
-    <template v-for="child in rowData.children">
-      <tree-node
-              v-if="!isLeaf(child)"
-              :row-data="child"
-              :default-order="defaultOrder"
-      />
-      <tree-leaf
-              v-if="isLeaf(child)"
-              :row-data="child"
-              :default-order="defaultOrder"
-      />
+    <template v-if="isOpen">
+      <template
+        v-for="(child, index) in rowData.children"
+      >
+        <tree-node
+          v-if="!isLeaf(child)"
+          :key="index"
+          :row-data="child"
+          :default-order="defaultOrder"
+        />
+        <tree-leaf
+          v-if="isLeaf(child)"
+          :key="index"
+          :row-data="child"
+          :default-order="defaultOrder"
+        />
+      </template>
     </template>
   </div>
 </template>
@@ -40,11 +68,28 @@
       defaultOrder: {
         type: Array,
         default: () => { return [] }
+      },
+    },
+    data: function(){
+      return {
+        isOpen: false
+      }
+    },
+    computed: {
+      columnWithOpenButton: function(){
+        return this.defaultOrder[0];
+      },
+      reguralColumns: function(){
+        return this.defaultOrder.slice(1);
+
       }
     },
     methods: {
       isLeaf(rowData){
         return isLeafFunc(rowData)
+      },
+      toggle(){
+        this.isOpen = !this.isOpen
       }
     }
   }
@@ -66,5 +111,10 @@
     box-sizing: border-box;
     margin-top: -1px;
     margin-left: -1px;
+  }
+
+  .open-button{
+    float: left;
+    display: inline;
   }
 </style>

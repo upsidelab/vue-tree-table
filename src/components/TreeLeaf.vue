@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <div
-            v-for="key in defaultOrder"
-            :key="key"
-            class="cell"
+      v-for="key in defaultOrder"
+      :key="key"
+      class="cell"
     >
       {{ rowData[key] }}
     </div>
