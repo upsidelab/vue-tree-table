@@ -5,7 +5,7 @@
     :data="tableData"
   >
     <!--<template slot="headerTemplate" slot-scope="headerProps">-->
-    <!--<TreeColumnHeaderRed :columnData="headerProps.columnData" />-->
+    <!--<TreeTableHeaderRed :columns="headerProps.columns" />-->
     <!--</template>-->
 
     <!--<template slot="rowTemplate" slot-scope="rowProps">-->

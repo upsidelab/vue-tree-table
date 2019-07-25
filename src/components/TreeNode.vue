@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <div class="indentation" :style="{ width: leftPadding + 'px' }">
-      </div>
+      <div
+        class="indentation"
+        :style="{ width: leftPadding + 'px' }"
+      />
       <div class="cell">
         <div
           class="open-button"

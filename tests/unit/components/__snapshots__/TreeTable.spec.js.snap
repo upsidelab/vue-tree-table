@@ -11,15 +11,15 @@ exports[`TreeTable when row template not provided uses default row component 1`]
       class="cell"
     >
       
-  Name
-
+    Name
+  
     </div>
     <div
       class="cell"
     >
       
-  Surname
-
+    Surname
+  
     </div>
   </div>
    
@@ -29,6 +29,11 @@ exports[`TreeTable when row template not provided uses default row component 1`]
     <div
       class="row"
     >
+      <div
+        class="indentation"
+        style="width: 0px;"
+      />
+       
       <div
         class="cell"
       >
@@ -49,6 +54,11 @@ exports[`TreeTable when row template not provided uses default row component 1`]
     <div
       class="row"
     >
+      <div
+        class="indentation"
+        style="width: 0px;"
+      />
+       
       <div
         class="cell"
       >
@@ -79,15 +89,15 @@ exports[`TreeTable when row template provided first puts surname and then name 1
       class="cell"
     >
       
-  Name
-
+    Name
+  
     </div>
     <div
       class="cell"
     >
       
-  Surname
-
+    Surname
+  
     </div>
   </div>
    
@@ -98,6 +108,11 @@ exports[`TreeTable when row template provided first puts surname and then name 1
       <div
         class="row"
       >
+        <div
+          class="indentation"
+          style="width: 0px;"
+        />
+         
         <div
           class="cell"
         >
@@ -139,6 +154,11 @@ exports[`TreeTable when row template provided first puts surname and then name 1
       <div
         class="row"
       >
+        <div
+          class="indentation"
+          style="width: 0px;"
+        />
+         
         <div
           class="cell"
         >
