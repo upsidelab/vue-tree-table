@@ -1,17 +1,19 @@
 <template>
-  <tree-node class="tree-row--red" :rowData="rowData" :defaultOrder="defaultOrder" :depth="depth" />
+  <tree-default-node class="tree-row--red" :rowData="rowData" :defaultOrder="defaultOrder" :depth="depth" :onOpen="onOpen"/>
 </template>
 
 <script>
-  import TreeNode from '../../../../../src/components/TreeNode'
+  import TreeDefaultNode from '../../../../../src/components/TreeDefaultNode'
 
   export default {
     name: 'TreeNodeRed',
-    components: {TreeNode},
+    components: {TreeDefaultNode},
     props: {
       rowData: Object,
       defaultOrder: Array,
-      depth: Number
+      depth: Number,
+      isOpen: Boolean,
+      onOpen: Function
     }
   }
 </script>

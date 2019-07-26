@@ -1,6 +1,8 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import TreeNode from '../../../src/components/TreeNode'
 import TreeLeaf from '../../../src/components/TreeLeaf'
+import TreeDefaultNode from '../../../src/components/TreeDefaultNode'
+import TreeCustomNode from './examples/custom_components/TreeNodeRed'
 
 
 describe('TreeNode', () => {
@@ -8,7 +10,7 @@ describe('TreeNode', () => {
     const rowData = { name: 'Simba', children: [{name: 'Kiara'}] }
     const defaultOrder = ['name']
 
-    const wrapper = shallowMount(TreeNode, {
+    const wrapper = mount(TreeNode, {
       propsData: {
         rowData,
         defaultOrder
@@ -38,7 +40,7 @@ describe('TreeNode', () => {
     const rowData = { name: 'Simba', children: [{name: 'Kiara'}] }
     const defaultOrder = ['name']
 
-    const wrapper = shallowMount(TreeNode, {
+    const wrapper = mount(TreeNode, {
       propsData: {
         rowData,
         defaultOrder
@@ -122,6 +124,66 @@ describe('TreeNode', () => {
 
       const child = wrapper.find(TreeLeaf)
       expect(child.vm.depth).toBe(6)
+    })
+  })
+
+  describe('No slot provided', () => {
+    it('renders default component', () => {
+      const rowData = { name: 'Simba', children: [{name: 'Kiara'}] }
+      const defaultOrder = ['name']
+
+      const wrapper = shallowMount(TreeNode, {
+        propsData: {
+          rowData,
+          defaultOrder
+        }
+      })
+
+      expect(wrapper.contains(TreeDefaultNode)).toBeTruthy()
+    })
+  })
+
+  describe('Node template provided', ()=> {
+    it('renders slot', () => {
+      const rowData = { name: 'Simba', children: [{name: 'Kiara'}] }
+      const defaultOrder = ['name']
+
+      const wrapper = shallowMount(TreeNode, {
+        propsData: {
+          rowData,
+          defaultOrder
+        },
+        scopedSlots: {
+          nodeTemplate: function(props){
+            return this.$createElement(TreeCustomNode, props)
+          }
+        }
+      })
+
+      expect(wrapper.contains(TreeCustomNode)).toBeTruthy()
+      expect(wrapper.contains(TreeDefaultNode)).toBeFalsy()
+    })
+
+    it('passes slot to node children', () => {
+      const rowData = { name: 'Simba', children: [{name: 'Kiara', children: [{name: 'Koda'}]}] }
+      const defaultOrder = ['name']
+
+      const wrapper = mount(TreeNode, {
+        propsData: {
+          rowData,
+          defaultOrder
+        },
+        scopedSlots: {
+          nodeTemplate: function(props){
+            return this.$createElement(TreeCustomNode, props)
+          }
+        }
+      })
+
+      wrapper.setData({isOpen: true})
+
+      const childNodeWrapper = wrapper.findAll(TreeNode).wrappers[1]
+      expect(childNodeWrapper.vm.$scopedSlots).toHaveProperty('nodeTemplate')
     })
   })
 })

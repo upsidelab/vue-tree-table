@@ -1,42 +1,55 @@
 <template>
   <div>
-    <slot
-      v-for="rowData in data"
+    <template
+      v-for="(rowData, index) in data"
       :rowData="rowData"
-      :defaultOrder="columns"
-      name="rowTemplate"
     >
       <tree-node
         v-if="!isLeaf(rowData)"
+        :key="index"
         :row-data="rowData"
         :depth="0"
-        :default-order="columns">
-        <template slot="leafTemplate" slot-scope="leafProps">
+        :default-order="columns"
+      >
+        <template
+          slot="nodeTemplate"
+          slot-scope="nodeProps"
+        >
           <slot
-                  name="leafTemplate"
-                  :defaultOrder="leafProps.defaultOrder"
-                  :rowData="leafProps.rowData"
-                  :depth="leafProps.depth"
+            name="nodeTemplate"
+            v-bind="nodeProps"
+          />
+        </template>
+
+        <template
+          slot="leafTemplate"
+          slot-scope="leafProps"
+        >
+          <slot
+            name="leafTemplate"
+            v-bind="leafProps"
           />
         </template>
       </tree-node>
 
       <tree-leaf
         v-if="isLeaf(rowData)"
+        :key="index"
         :row-data="rowData"
         :depth="0"
-        :default-order="columns">
-
-        <template slot="leafTemplate" slot-scope="leafProps">
+        :default-order="columns"
+      >
+        <template
+          slot="leafTemplate"
+          slot-scope="leafProps"
+        >
           <slot
-                  name="leafTemplate"
-                  :defaultOrder="leafProps.defaultOrder"
-                  :rowData="leafProps.rowData"
-                  :depth="leafProps.depth"
+            name="leafTemplate"
+            v-bind="leafProps"
           />
         </template>
       </tree-leaf>
-    </slot>
+    </template>
   </div>
 </template>
 

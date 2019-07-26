@@ -2,23 +2,23 @@
   <div>
     <div class="row">
       <div
-              class="indentation"
-              :style="{ width: leftPadding + 'px' }"
+        class="indentation"
+        :style="{ width: leftPadding + 'px' }"
       />
       <div class="cell">
         <div
-                class="open-button"
-                @click="toggle"
+          class="open-button"
+          @click="toggle"
         >
           <div
-                  v-if="!isOpen"
-                  class="closed"
+            v-if="!isOpen"
+            class="closed"
           >
             >
           </div>
           <div
-                  v-if="isOpen"
-                  class="opened"
+            v-if="isOpen"
+            class="opened"
           >
             v
           </div>
@@ -28,9 +28,9 @@
         </div>
       </div>
       <div
-              v-for="key in reguralColumns"
-              :key="key"
-              class="cell"
+        v-for="key in reguralColumns"
+        :key="key"
+        class="cell"
       >
         {{ rowData[key] }}
       </div>
@@ -54,9 +54,9 @@
         type: Number,
         default: 0
       },
-      isOpen: {
-        type: Boolean,
-        default: false
+      onOpen: {
+        type: Function,
+        default: () => {}
       }
     },
     data: function(){
@@ -77,7 +77,8 @@
     },
     methods: {
       toggle(){
-        this.$emit('openClicked')
+        this.isOpen = !this.isOpen
+        this.onOpen()
       }
     }
   }

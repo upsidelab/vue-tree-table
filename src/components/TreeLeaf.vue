@@ -1,7 +1,16 @@
 <template>
   <div>
-    <slot name="leafTemplate" :row-data="rowData" :default-order="defaultOrder" :depth="depth">
-      <TreeDefaultLeaf :row-data="rowData" :default-order="defaultOrder" :depth="depth" />
+    <slot
+      name="leafTemplate"
+      :row-data="rowData"
+      :default-order="defaultOrder"
+      :depth="depth"
+    >
+      <TreeDefaultLeaf
+        :row-data="rowData"
+        :default-order="defaultOrder"
+        :depth="depth"
+      />
     </slot>
   </div>
 </template>

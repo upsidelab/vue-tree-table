@@ -1,23 +1,43 @@
 <template>
   <div>
-    <TreeDefaultNode :row-data="rowData" :default-order="defaultOrder" :depth="depth" :is-open="isOpen" v-on:openClicked="toggle" />
+    <slot
+      name="nodeTemplate"
+      :row-data="rowData"
+      :default-order="defaultOrder"
+      :depth="depth"
+      :onOpen="toggle">
+      <TreeDefaultNode
+        :row-data="rowData"
+        :default-order="defaultOrder"
+        :depth="depth"
+        :on-open="toggle"
+      />
+    </slot>
+
     <template v-if="isOpen">
       <template
-        v-for="(child, index) in rowData.children"
-      >
+        v-for="(child, index) in rowData.children">
         <tree-node
           v-if="!isLeaf(child)"
           :key="index"
           :depth="depth+1"
           :row-data="child"
           :default-order="defaultOrder">
-          <template slot="leafTemplate" slot-scope="leafProps">
+
+          <template
+            slot="leafTemplate"
+            slot-scope="leafProps">
             <slot
-                    name="leafTemplate"
-                    :defaultOrder="leafProps.defaultOrder"
-                    :rowData="leafProps.rowData"
-                    :depth="leafProps.depth"
-            />
+              name="leafTemplate"
+              v-bind="leafProps" />
+          </template>
+
+          <template
+            slot="nodeTemplate"
+            slot-scope="nodeProps">
+            <slot
+              name="nodeTemplate"
+              v-bind="nodeProps" />
           </template>
         </tree-node>
 
@@ -27,13 +47,15 @@
           :key="index"
           :depth="depth+1"
           :row-data="child"
-          :default-order="defaultOrder">
-          <template slot="leafTemplate" slot-scope="leafProps">
+          :default-order="defaultOrder"
+        >
+          <template
+            slot="leafTemplate"
+            slot-scope="leafProps"
+          >
             <slot
-                    name="leafTemplate"
-                    :defaultOrder="leafProps.defaultOrder"
-                    :rowData="leafProps.rowData"
-                    :depth="leafProps.depth"
+              name="leafTemplate"
+              v-bind="leafProps"
             />
           </template>
         </tree-leaf>

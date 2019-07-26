@@ -9,22 +9,21 @@
     <!--</template>-->
 
     <!--<template slot="leafTemplate" slot-scope="leafProps">-->
-      <!--<tree-node-red :rowData="leafProps.rowData" :defaultOrder="leafProps.defaultOrder" :depth="leafProps.depth"/>-->
+    <!--<tree-node-red :rowData="leafProps.rowData" :defaultOrder="leafProps.defaultOrder" :depth="leafProps.depth"/>-->
     <!--</template>-->
 
-    <!--<template slot="rowTemplate" slot-scope="rowProps">-->
-    <!--<tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
+    <!--<template slot="nodeTemplate" slot-scope="nodeProps">-->
+    <!--<tree-node-red :rowData="nodeProps.rowData" :defaultOrder="nodeProps.defaultOrder" :depth="nodeProps.depth" :onOpen="nodeProps.onOpen"/>-->
     <!--</template>-->
   </tree-table>
 </template>
 
 <script>
 import TreeTable from './TreeTable'
-import TreeNodeRed from '../../tests/unit/components/examples/custom_components/TreeNodeRed'
 
 export default {
   name: 'HelloWorld',
-  components: {TreeTable, TreeNodeRed},
+  components: {TreeTable},
   props: {
   },
   data: function(){

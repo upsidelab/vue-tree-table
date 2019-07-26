@@ -45,6 +45,7 @@
     flex-flow: row wrap;
     justify-content: center;
     padding-left: 15px;
+    background-color: none;
   }
 
   .cell{

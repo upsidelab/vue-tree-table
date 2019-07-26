@@ -12,23 +12,23 @@
       :columns="columnsOrder"
     >
       <template
-        slot="rowTemplate"
-        slot-scope="rowProps"
+        slot="nodeTemplate"
+        slot-scope="nodeProps"
       >
         <slot
-          name="rowTemplate"
-          :defaultOrder="rowProps.defaultOrder"
-          :rowData="rowProps.rowData"
+          name="nodeTemplate"
+          v-bind="nodeProps"
         />
       </template>
 
 
-      <template slot="leafTemplate" slot-scope="leafProps">
+      <template
+        slot="leafTemplate"
+        slot-scope="leafProps"
+      >
         <slot
-                name="leafTemplate"
-                :defaultOrder="leafProps.defaultOrder"
-                :rowData="leafProps.rowData"
-                :depth="leafProps.depth"
+          name="leafTemplate"
+          v-bind="leafProps"
         />
       </template>
     </TreeBody>

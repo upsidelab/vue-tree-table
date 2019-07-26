@@ -26,52 +26,56 @@ exports[`TreeTable when row template not provided uses default row component 1`]
   <div>
     <!---->
      
-    <div
-      class="row"
-    >
+    <div>
       <div
-        class="indentation"
-        style="width: 0px;"
-      />
-       
-      <div
-        class="cell"
+        class="row"
       >
-        
+        <div
+          class="indentation"
+          style="width: 0px;"
+        />
+         
+        <div
+          class="cell"
+        >
+          
     Ziuta
   
-      </div>
-      <div
-        class="cell"
-      >
-        
+        </div>
+        <div
+          class="cell"
+        >
+          
     Kozak
   
+        </div>
       </div>
     </div>
     <!---->
      
-    <div
-      class="row"
-    >
+    <div>
       <div
-        class="indentation"
-        style="width: 0px;"
-      />
-       
-      <div
-        class="cell"
+        class="row"
       >
-        
+        <div
+          class="indentation"
+          style="width: 0px;"
+        />
+         
+        <div
+          class="cell"
+        >
+          
     Koziolek
   
-      </div>
-      <div
-        class="cell"
-      >
-        
+        </div>
+        <div
+          class="cell"
+        >
+          
     Matolek
   
+        </div>
       </div>
     </div>
   </div>
@@ -102,9 +106,9 @@ exports[`TreeTable when row template provided first puts surname and then name 1
   </div>
    
   <div>
-    <div
-      class="tree-row--red"
-    >
+    <!---->
+     
+    <div>
       <div
         class="row"
       >
@@ -116,41 +120,22 @@ exports[`TreeTable when row template provided first puts surname and then name 1
         <div
           class="cell"
         >
-          <div
-            class="open-button"
-          >
-            <div
-              class="closed"
-            >
-              
-          &gt;
-        
-            </div>
-             
-            <!---->
-          </div>
-           
-          <div>
-            
-        Ziuta
-      
-          </div>
+          
+    Ziuta
+  
         </div>
-         
         <div
           class="cell"
         >
           
-      Kozak
-    
+    Kozak
+  
         </div>
       </div>
-       
-      <!---->
     </div>
-    <div
-      class="tree-row--red"
-    >
+    <!---->
+     
+    <div>
       <div
         class="row"
       >
@@ -162,37 +147,18 @@ exports[`TreeTable when row template provided first puts surname and then name 1
         <div
           class="cell"
         >
-          <div
-            class="open-button"
-          >
-            <div
-              class="closed"
-            >
-              
-          &gt;
-        
-            </div>
-             
-            <!---->
-          </div>
-           
-          <div>
-            
-        Koziolek
-      
-          </div>
+          
+    Koziolek
+  
         </div>
-         
         <div
           class="cell"
         >
           
-      Matolek
-    
+    Matolek
+  
         </div>
       </div>
-       
-      <!---->
     </div>
   </div>
 </div>
