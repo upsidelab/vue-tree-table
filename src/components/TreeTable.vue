@@ -21,6 +21,16 @@
           :rowData="rowProps.rowData"
         />
       </template>
+
+
+      <template slot="leafTemplate" slot-scope="leafProps">
+        <slot
+                name="leafTemplate"
+                :defaultOrder="leafProps.defaultOrder"
+                :rowData="leafProps.rowData"
+                :depth="leafProps.depth"
+        />
+      </template>
     </TreeBody>
   </div>
 </template>

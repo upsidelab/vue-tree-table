@@ -1,5 +1,5 @@
 <template>
-  <tree-node class="tree-row--red" :rowData="rowData" :defaultOrder="defaultOrder" />
+  <tree-node class="tree-row--red" :rowData="rowData" :defaultOrder="defaultOrder" :depth="depth" />
 </template>
 
 <script>
@@ -10,7 +10,8 @@
     components: {TreeNode},
     props: {
       rowData: Object,
-      defaultOrder: Array
+      defaultOrder: Array,
+      depth: Number
     }
   }
 </script>

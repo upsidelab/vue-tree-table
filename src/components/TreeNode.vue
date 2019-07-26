@@ -44,15 +44,33 @@
           :key="index"
           :depth="depth+1"
           :row-data="child"
-          :default-order="defaultOrder"
-        />
+          :default-order="defaultOrder">
+          <template slot="leafTemplate" slot-scope="leafProps">
+            <slot
+                    name="leafTemplate"
+                    :defaultOrder="leafProps.defaultOrder"
+                    :rowData="leafProps.rowData"
+                    :depth="leafProps.depth"
+            />
+          </template>
+        </tree-node>
+
+
         <tree-leaf
           v-if="isLeaf(child)"
           :key="index"
           :depth="depth+1"
           :row-data="child"
-          :default-order="defaultOrder"
-        />
+          :default-order="defaultOrder">
+          <template slot="leafTemplate" slot-scope="leafProps">
+            <slot
+                    name="leafTemplate"
+                    :defaultOrder="leafProps.defaultOrder"
+                    :rowData="leafProps.rowData"
+                    :depth="leafProps.depth"
+            />
+          </template>
+        </tree-leaf>
       </template>
     </template>
   </div>
