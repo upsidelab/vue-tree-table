@@ -1,18 +1,17 @@
 <template>
-    <tree-table
-            class="table"
-            :columns="columns"
-            :data="tableData"
-    >
+  <tree-table
+    class="table"
+    :columns="columns"
+    :data="tableData"
+  >
+    <template #headerTemplate="headerProps">
+      <SortingHeader v-bind="headerProps" />
+    </template>
 
-        <template #headerTemplate="headerProps">
-            <SortingHeader v-bind="headerProps"></SortingHeader>
-        </template>
-
-        <template #nodeTemplate="nodeProps">
-            <SortingNode v-bind="nodeProps"></SortingNode>
-        </template>
-    </tree-table>
+    <template #nodeTemplate="nodeProps">
+      <SortingNode v-bind="nodeProps" />
+    </template>
+  </tree-table>
 </template>
 
 <script>

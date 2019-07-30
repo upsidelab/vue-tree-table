@@ -1,17 +1,24 @@
 <template>
-    <div class="row">
-        <div
-                v-for="column in columns"
-                :key="column.id"
-                class="cell"
-        >
-            {{ column.label }}
-            <div v-if="sortingKeys.includes(column.id)" class="controls">
-                <div @click="sortBy({key: column.id, asc: true})">^</div>
-                <div @click="sortBy({key: column.id, asc: false})">v</div>
-            </div>
+  <div class="row">
+    <div
+      v-for="column in columns"
+      :key="column.id"
+      class="cell"
+    >
+      {{ column.label }}
+      <div
+        v-if="sortingKeys.includes(column.id)"
+        class="controls"
+      >
+        <div @click="sortBy({key: column.id, asc: true})">
+          ^
         </div>
+        <div @click="sortBy({key: column.id, asc: false})">
+          v
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

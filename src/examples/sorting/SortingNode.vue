@@ -1,37 +1,45 @@
 <template>
-    <div>
-        <div class="row">
-            <div
-                        class="open-button"
-                        @click="toggle"
-            >
-                <div
-                        v-if="!isOpen"
-                        class="closed"
-                >
-                    >
-                </div>
-                <div
-                        v-if="isOpen"
-                        class="opened"
-                >
-                    v
-                </div>
-            </div>
-            <div
-                    v-for="key in defaultOrder"
-                    :key="key"
-                    class="cell"
-            >
-                    <div v-if="childrenColumns.includes(key)"
-                         style="display: flex; flex-direction: row">
-                        <div @click="sortBy({key, asc: true})">^</div>
-                        <div @click="sortBy({key, asc: false})">v</div>
-                    </div>
-                    <div v-else> {{rowData[key]}} </div>
-            </div>
+  <div>
+    <div class="row">
+      <div
+        class="open-button"
+        @click="toggle"
+      >
+        <div
+          v-if="!isOpen"
+          class="closed"
+        >
+          >
         </div>
+        <div
+          v-if="isOpen"
+          class="opened"
+        >
+          v
+        </div>
+      </div>
+      <div
+        v-for="key in defaultOrder"
+        :key="key"
+        class="cell"
+      >
+        <div
+          v-if="childrenColumns.includes(key)"
+          style="display: flex; flex-direction: row"
+        >
+          <div @click="sortBy({key, asc: true})">
+            ^
+          </div>
+          <div @click="sortBy({key, asc: false})">
+            v
+          </div>
+        </div>
+        <div v-else>
+          {{ rowData[key] }}
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <!--<HelloWorld />-->
-    <SortingExample/>
+    <HelloWorld />
+    <hr>
+    <SortingExample />
   </div>
 </template>
 

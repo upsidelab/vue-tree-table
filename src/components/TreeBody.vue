@@ -1,7 +1,7 @@
 <template>
   <div>
     <template
-      v-for="(rowData, index) in data"
+      v-for="rowData in data"
       :rowData="rowData"
     >
       <tree-node

@@ -53,6 +53,9 @@
         return this.columns.map(column => column.id);
       },
     },
+    created() {
+        this.enrichTableData()
+    },
     methods: {
       addUniqueId(data){
         data.uuid = uuid.v4()
@@ -63,9 +66,6 @@
       enrichTableData() {
           this.data.forEach(el => this.addUniqueId(el))
       }
-    },
-    created() {
-        this.enrichTableData()
     }
   }
 </script>
