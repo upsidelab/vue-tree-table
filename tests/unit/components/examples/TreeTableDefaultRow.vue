@@ -5,11 +5,11 @@
 
 <script>
   import TreeTable from '../../../../src/components/TreeTable'
-  import TreeRow from '../../../../src/components/TreeRow'
+  import TreeNode from '../../../../src/components/TreeNode'
 
   export default {
     name: 'HelloWorld',
-    components: {TreeTable, TreeRow},
+    components: {TreeTable, TreeNode},
     props: {
       tableData: Array,
       columns: Array

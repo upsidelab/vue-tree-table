@@ -1,27 +1,28 @@
 <template>
   <div>
-    <div class="row">
-      <slot
-        v-for="column in columns"
-        :columnData="column"
-        name="headerTemplate"
-      >
-        <TreeColumnHeader :column-data="column" />
-      </slot>
-    </div>
+    <slot
+      name="headerTemplate"
+      :columns="columns"
+    >
+      <TreeTableHeader :columns="columns" />
+    </slot>
 
     <TreeBody
       :data="data"
       :columns="columnsOrder"
     >
-      <template
-        slot="rowTemplate"
-        slot-scope="rowProps"
-      >
+      <template #nodeTemplate="nodeProps">
         <slot
-          name="rowTemplate"
-          :defaultOrder="rowProps.defaultOrder"
-          :rowData="rowProps.rowData"
+          name="nodeTemplate"
+          v-bind="nodeProps"
+        />
+      </template>
+
+
+      <template #leafTemplate="leafProps">
+        <slot
+          name="leafTemplate"
+          v-bind="leafProps"
         />
       </template>
     </TreeBody>
@@ -30,11 +31,11 @@
 
 <script>
   import TreeBody from './TreeBody'
-  import TreeColumnHeader from './TreeColumnHeader'
+  import TreeTableHeader from './TreeTableHeader'
 
   export default {
     name: 'TreeTable',
-    components: {TreeBody, TreeColumnHeader},
+    components: {TreeBody, TreeTableHeader},
     props: {
       data: {
         type: Array,
@@ -54,9 +55,4 @@
 </script>
 
 <style scoped>
-  .row{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  }
 </style>

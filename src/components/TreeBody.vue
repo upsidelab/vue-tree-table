@@ -1,24 +1,57 @@
 <template>
   <div>
-    <slot
-      v-for="rowData in data"
+    <template
+      v-for="(rowData, index) in data"
       :rowData="rowData"
-      :defaultOrder="columns"
-      name="rowTemplate"
     >
-      <tree-row
+      <tree-node
+        v-if="!isLeaf(rowData)"
+        :key="index"
         :row-data="rowData"
+        :depth="0"
         :default-order="columns"
-      />
-    </slot>
+      >
+        <template #nodeTemplate="nodeProps">
+          <slot
+            name="nodeTemplate"
+            v-bind="nodeProps"
+          />
+        </template>
+
+        <template #leafTemplate="leafProps">
+          <slot
+            name="leafTemplate"
+            v-bind="leafProps"
+          />
+        </template>
+      </tree-node>
+
+      <tree-leaf
+        v-if="isLeaf(rowData)"
+        :key="index"
+        :row-data="rowData"
+        :depth="0"
+        :default-order="columns"
+      >
+        <template #leafTemplate="leafProps">
+          <slot
+            name="leafTemplate"
+            v-bind="leafProps"
+          />
+        </template>
+      </tree-leaf>
+    </template>
   </div>
 </template>
 
 <script>
-  import TreeRow from './TreeRow'
+  import TreeNode from './TreeNode'
+  import TreeLeaf from './TreeLeaf'
+  import isLeafFunc from '../utils/isLeaf'
+
   export default {
     name: 'TreeBody',
-    components: {TreeRow},
+    components: {TreeLeaf, TreeNode},
     props: {
       data: {
         type: Array,
@@ -28,6 +61,11 @@
         type: Array,
         default: function(){ return [] }
       },
+    },
+    methods: {
+      isLeaf(rowData){
+        return isLeafFunc(rowData)
+      }
     }
   }
 </script>

@@ -4,12 +4,16 @@
     :columns="columns"
     :data="tableData"
   >
-    <!--<template slot="headerTemplate" slot-scope="headerProps">-->
-    <!--<TreeColumnHeaderRed :columnData="headerProps.columnData" />-->
+    <!--<template #headerTemplate="headerProps">-->
+     <!--{{headerProps}}-->
     <!--</template>-->
 
-    <!--<template slot="rowTemplate" slot-scope="rowProps">-->
-    <!--<tree-row-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder"/>-->
+    <!--<template #leafTemplate="leafProps">-->
+     <!--{{leafProps}}-->
+    <!--</template>-->
+
+    <!--<template #nodeTemplate="nodeProps">-->
+      <!--{{nodeProps}}-->
     <!--</template>-->
   </tree-table>
 </template>
@@ -24,7 +28,15 @@ export default {
   },
   data: function(){
     return {
-      tableData: [{name: 'Ziuta', surname: 'Kozak' }, {name: 'Koziolek', surname: 'Matolek'}],
+      tableData: [
+        {name: 'Ziuta', surname: 'Kozak', children: [
+          {name: 'Czerwony Kapturek', surname: 'Kozak'}
+          ]},
+        {name: 'Koziolek', surname: 'Matolek', children: [
+            { name: 'Timon', surname: 'Matolek', children: [ {name: 'Timon Junior', surname: 'Matolek'} ]}
+          ]},
+        {name: 'Pumba', surname: 'unknown'}
+        ],
       columns: [{label: 'Name', id: 'name'}, {label: 'Surname', id: 'surname'}]
     }
   }
