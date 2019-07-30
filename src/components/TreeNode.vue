@@ -5,7 +5,8 @@
       :row-data="rowData"
       :default-order="defaultOrder"
       :depth="depth"
-      :onOpen="toggle">
+      :onOpen="toggle"
+    >
       <TreeDefaultNode
         :row-data="rowData"
         :default-order="defaultOrder"
@@ -16,31 +17,29 @@
 
     <template v-if="isOpen">
       <template
-        v-for="(child, index) in rowData.children">
+        v-for="(child, index) in rowData.children"
+      >
         <tree-node
           v-if="!isLeaf(child)"
           :key="index"
           :depth="depth+1"
           :row-data="child"
-          :default-order="defaultOrder">
-
-          <template
-            slot="leafTemplate"
-            slot-scope="leafProps">
+          :default-order="defaultOrder"
+        >
+          <template #leafTemplate="leafProps">
             <slot
               name="leafTemplate"
-              v-bind="leafProps" />
+              :leafProps="leafProps"
+            />
           </template>
 
-          <template
-            slot="nodeTemplate"
-            slot-scope="nodeProps">
+          <template #nodeTemplate="nodeProps">
             <slot
               name="nodeTemplate"
-              v-bind="nodeProps" />
+              :nodeProps="nodeProps"
+            />
           </template>
         </tree-node>
-
 
         <tree-leaf
           v-if="isLeaf(child)"
@@ -49,13 +48,10 @@
           :row-data="child"
           :default-order="defaultOrder"
         >
-          <template
-            slot="leafTemplate"
-            slot-scope="leafProps"
-          >
+          <template #leafTemplate="leafProps">
             <slot
               name="leafTemplate"
-              v-bind="leafProps"
+              :leafProps="leafProps"
             />
           </template>
         </tree-leaf>

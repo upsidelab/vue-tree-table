@@ -11,24 +11,18 @@
       :data="data"
       :columns="columnsOrder"
     >
-      <template
-        slot="nodeTemplate"
-        slot-scope="nodeProps"
-      >
+      <template #nodeTemplate="nodeProps">
         <slot
           name="nodeTemplate"
-          v-bind="nodeProps"
+          :nodeProps="nodeProps"
         />
       </template>
 
 
-      <template
-        slot="leafTemplate"
-        slot-scope="leafProps"
-      >
+      <template #leafTemplate="leafProps">
         <slot
           name="leafTemplate"
-          v-bind="leafProps"
+          :leafProps="leafProps"
         />
       </template>
     </TreeBody>
