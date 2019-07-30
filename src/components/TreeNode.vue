@@ -29,14 +29,14 @@
           <template #leafTemplate="leafProps">
             <slot
               name="leafTemplate"
-              :leafProps="leafProps"
+              v-bind="leafProps"
             />
           </template>
 
           <template #nodeTemplate="nodeProps">
             <slot
               name="nodeTemplate"
-              :nodeProps="nodeProps"
+              v-bind="nodeProps"
             />
           </template>
         </tree-node>
@@ -51,7 +51,7 @@
           <template #leafTemplate="leafProps">
             <slot
               name="leafTemplate"
-              :leafProps="leafProps"
+              v-bind="leafProps"
             />
           </template>
         </tree-leaf>

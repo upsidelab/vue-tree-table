@@ -8,12 +8,12 @@
     <!--<TreeTableHeaderRed :columns="headerProps.columns" />-->
     <!--</template>-->
 
-    <!--<template slot="leafTemplate" slot-scope="leafProps">-->
-    <!--<tree-node-red :rowData="leafProps.rowData" :defaultOrder="leafProps.defaultOrder" :depth="leafProps.depth"/>-->
+    <!--<template #leafTemplate="leafProps">-->
+     <!--{{leafProps}}-->
     <!--</template>-->
 
-    <!--<template slot="nodeTemplate" slot-scope="nodeProps">-->
-    <!--<tree-node-red :rowData="nodeProps.rowData" :defaultOrder="nodeProps.defaultOrder" :depth="nodeProps.depth" :onOpen="nodeProps.onOpen"/>-->
+    <!--<template #nodeTemplate="nodeProps">-->
+      <!--{{nodeProps}}-->
     <!--</template>-->
   </tree-table>
 </template>
