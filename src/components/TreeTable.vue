@@ -3,6 +3,7 @@
     <slot
       name="headerTemplate"
       :columns="columns"
+      :data="data"
     >
       <TreeTableHeader :columns="columns" />
     </slot>
@@ -32,6 +33,7 @@
 <script>
   import TreeBody from './TreeBody'
   import TreeTableHeader from './TreeTableHeader'
+  import { uuid } from 'vue-uuid';
 
   export default {
     name: 'TreeTable',
@@ -49,7 +51,21 @@
     computed: {
       columnsOrder(){
         return this.columns.map(column => column.id);
+      },
+    },
+    methods: {
+      addUniqueId(data){
+        data.uuid = uuid.v4()
+        if (data.children) {
+            data.children.forEach(child => this.addUniqueId(child))
+        }
+      },
+      enrichTableData() {
+          this.data.forEach(el => this.addUniqueId(el))
       }
+    },
+    created() {
+        this.enrichTableData()
     }
   }
 </script>

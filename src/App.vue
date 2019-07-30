@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <!--<HelloWorld />-->
+    <SortingExample/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import SortingExample from "./examples/sorting/SortingExample";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    SortingExample
   }
 }
 </script>
