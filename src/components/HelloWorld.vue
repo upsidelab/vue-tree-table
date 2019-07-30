@@ -4,8 +4,8 @@
     :columns="columns"
     :data="tableData"
   >
-    <!--<template slot="headerTemplate" slot-scope="headerProps">-->
-    <!--<TreeTableHeaderRed :columns="headerProps.columns" />-->
+    <!--<template #headerTemplate="headerProps">-->
+     <!--{{headerProps}}-->
     <!--</template>-->
 
     <!--<template #leafTemplate="leafProps">-->
