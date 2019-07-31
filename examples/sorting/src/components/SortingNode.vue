@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import sortData from "./sortData";
+    import sortData from "../utils/sortData";
 
     export default {
         name: 'SortingNode',

@@ -18,11 +18,11 @@
 </template>
 
 <script>
-    import TreeTable from '../../components/TreeTable'
+    import TreeTable from '../../../../tree-table/src/package'
     import SortingNode from './SortingNode'
     import SortingHeader from "./SortingHeader";
-    import data from './data'
-    import sortData from "./sortData";
+    import data from '../resources/data'
+    import sortData from "../utils/sortData";
 
     export default {
         name: 'SortingExample',

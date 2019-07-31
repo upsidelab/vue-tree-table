@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <SortingExample/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SortingExample from './components/SortingExample'
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld,
+      SortingExample
   }
 }
 </script>
@@ -23,6 +23,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  text-align: center;
 }
 </style>
