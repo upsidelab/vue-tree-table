@@ -3,13 +3,12 @@
     <slot
       name="headerTemplate"
       :columns="columns"
-      :tableData="tableData"
     >
       <TreeTableHeader :columns="columns" />
     </slot>
 
     <TreeBody
-      :tableData="tableData"
+      :table-data="tableData"
       :columns="columnsOrder"
     >
       <template #nodeTemplate="nodeProps">
@@ -53,6 +52,9 @@
         return this.columns.map(column => column.id);
       },
     },
+    created() {
+        this.enrichTableData()
+    },
     methods: {
       addUniqueId(data){
         data.uuid = uuid.v4()
@@ -63,9 +65,6 @@
       enrichTableData() {
           this.tableData.forEach(el => this.addUniqueId(el))
       }
-    },
-    created() {
-        this.enrichTableData()
     },
   }
 </script>

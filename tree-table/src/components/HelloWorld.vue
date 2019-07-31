@@ -2,7 +2,7 @@
   <tree-table
     class="table"
     :columns="columns"
-    :tableData="tableData"
+    :table-data="tableData"
   >
     <!--<template #headerTemplate="headerProps">-->
     <!--{{headerProps}}-->
