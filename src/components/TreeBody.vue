@@ -1,7 +1,7 @@
 <template>
   <div>
     <template
-      v-for="rowData in data"
+      v-for="rowData in tableData"
       :rowData="rowData"
     >
       <tree-node
@@ -53,7 +53,7 @@
     name: 'TreeBody',
     components: {TreeLeaf, TreeNode},
     props: {
-      data: {
+      tableData: {
         type: Array,
         default: function(){ return [] }
       },

@@ -1,5 +1,5 @@
 <template>
-  <tree-table class="table" :data="tableData" :columns="columns">
+  <tree-table class="table" :tableData="tableData" :columns="columns">
     <template slot="rowTemplate" slot-scope="rowProps">
       <tree-node-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder" />
     </template>

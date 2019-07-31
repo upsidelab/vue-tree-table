@@ -1,58 +1,62 @@
 <template>
-  <div>
     <div class="row">
-      <div
-        class="open-button"
-        @click="toggle"
-      >
         <div
-          v-if="!isOpen"
-          class="closed"
+                class="open-button"
+                @click="toggle"
         >
-          >
+            <div
+                    v-if="!isOpen"
+                    class="closed"
+            >
+                >
+            </div>
+            <div
+                    v-if="isOpen"
+                    class="opened"
+            >
+                v
+            </div>
         </div>
         <div
-          v-if="isOpen"
-          class="opened"
+                v-for="key in defaultOrder"
+                :key="key"
+                class="cell"
         >
-          v
+            <div
+                    v-if="childrenColumns.includes(key)"
+                    style="display: flex; flex-direction: row"
+            >
+                <div @click="sortChildrenBy({key, asc: true})">
+                    ^
+                </div>
+                <div @click="sortChildrenBy({key, asc: false})">
+                    v
+                </div>
+            </div>
+            <div v-else>
+                {{ rowData[key] }}
+            </div>
         </div>
-      </div>
-      <div
-        v-for="key in defaultOrder"
-        :key="key"
-        class="cell"
-      >
-        <div
-          v-if="childrenColumns.includes(key)"
-          style="display: flex; flex-direction: row"
-        >
-          <div @click="sortBy({key, asc: true})">
-            ^
-          </div>
-          <div @click="sortBy({key, asc: false})">
-            v
-          </div>
-        </div>
-        <div v-else>
-          {{ rowData[key] }}
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
+    import sortTable from "./sortTable";
+
     export default {
         name: 'SortingNode',
         props: {
             rowData: {
                 type: Object,
-                default: () => { return {} }
+                default: () => {
+                    return {}
+                }
             },
             defaultOrder: {
                 type: Array,
-                default: () => { return [] }
+                default: () => {
+                    return []
+                }
             },
             depth: {
                 type: Number,
@@ -60,34 +64,28 @@
             },
             onOpen: {
                 type: Function,
-                default: () => {}
+                default: () => {
+                }
             }
         },
-        data: function(){
+        data: function () {
             return {
                 isOpen: false
             }
         },
         computed: {
-            columnWithOpenButton: function(){
+            columnWithOpenButton: function () {
                 return this.defaultOrder[0]
             },
-            childrenColumns: function(){
+            childrenColumns: function () {
                 return this.defaultOrder.slice(2)
             }
         },
         methods: {
-            sortBy({key, asc = true}) {
-                this.rowData.children.sort(function (a, b) {
-                    if (a[key] === b[key]) return 0
-
-                    const boolean =  asc ?
-                        a[key] > b[key] :
-                        a[key] < b[key]
-                    return boolean ? 1 : -1
-                })
+            sortChildrenBy(params) {
+                sortTable(this.rowData.children, params)
             },
-            toggle(){
+            toggle() {
                 this.isOpen = !this.isOpen
                 this.onOpen()
             }
@@ -96,7 +94,7 @@
 </script>
 
 <style scoped>
-    .row{
+    .row {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -107,14 +105,14 @@
         margin-top: -1px;
     }
 
-    .cell{
+    .cell {
         text-align: left;
         flex-grow: 1;
         flex-basis: 0;
         box-sizing: border-box;
     }
 
-    .open-button{
+    .open-button {
         float: left;
         display: inline;
         margin-right: 10px;

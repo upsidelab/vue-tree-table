@@ -3,13 +3,13 @@
     <slot
       name="headerTemplate"
       :columns="columns"
-      :data="data"
+      :tableData="tableData"
     >
       <TreeTableHeader :columns="columns" />
     </slot>
 
     <TreeBody
-      :data="data"
+      :tableData="tableData"
       :columns="columnsOrder"
     >
       <template #nodeTemplate="nodeProps">
@@ -39,9 +39,9 @@
     name: 'TreeTable',
     components: {TreeBody, TreeTableHeader},
     props: {
-      data: {
+      tableData: {
         type: Array,
-        default: () => { return {} }
+        default: () => { return [] }
       },
       columns: {
         type: Array,
@@ -53,9 +53,6 @@
         return this.columns.map(column => column.id);
       },
     },
-    created() {
-        this.enrichTableData()
-    },
     methods: {
       addUniqueId(data){
         data.uuid = uuid.v4()
@@ -64,9 +61,12 @@
         }
       },
       enrichTableData() {
-          this.data.forEach(el => this.addUniqueId(el))
+          this.tableData.forEach(el => this.addUniqueId(el))
       }
-    }
+    },
+    created() {
+        this.enrichTableData()
+    },
   }
 </script>
 
