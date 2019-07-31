@@ -6,12 +6,12 @@ import TreeNode from '../../../src/components/TreeNode'
 describe('TreeBody', () => {
 
   it('renders all rows', () => {
-    const data = [{name: 'Little Red Riding Hood'}, {name: 'Cinderella', children: [{ name: 'Gapcio' }]}]
+    const tableData = [{name: 'Little Red Riding Hood', uuid: '123'}, {name: 'Cinderella', uuid: '1234', children: [{ name: 'Gapcio', uuid: '12312' }]}]
     const columns = ['name']
 
     const wrapper = shallowMount(TreeBody, {
       propsData: {
-        data: data,
+        tableData: tableData,
         columns: columns
       }
     })
@@ -22,12 +22,12 @@ describe('TreeBody', () => {
 
   describe('when row has no children', () => {
     it('renders leaf component', () => {
-      const data = [{name: 'Czerwony Kapturek'}]
+      const tableData = [{name: 'Czerwony Kapturek', uuid: '1231'}]
       const columns = ['name']
 
       const wrapper = shallowMount(TreeBody, {
         propsData: {
-          data: data,
+          tableData: tableData,
           columns: columns
         }
       })
@@ -39,12 +39,12 @@ describe('TreeBody', () => {
 
   describe('when row has children', () => {
     it('renders node component', () => {
-      const data = [{name: 'Cinderella', children: [{ name: 'Gapcio' }]}]
+      const tableData = [{name: 'Cinderella', uuid: '1231', children: [{ name: 'Gapcio', uuid: '12312' }]}]
       const columns = ['name']
 
       const wrapper = shallowMount(TreeBody, {
         propsData: {
-          data: data,
+          tableData: tableData,
           columns: columns
         }
       })
@@ -55,12 +55,12 @@ describe('TreeBody', () => {
   })
 
   describe('Node template provided', ()=> {
-    const data = [{ name: 'Simba', children: [{name: 'Kiara', children: [{name: 'Koda'}]}] }]
+    const tableData = [{ name: 'Simba', uuid: '123', children: [{name: 'Kiara', uuid: '1231', children: [{name: 'Koda', uuid: '123123123'}]}] }]
 
     const wrapper = mount(TreeBody, {
       propsData: {
-        data,
-        columns: [{id: 'name', label: 'Name'}]
+        tableData,
+        columns: ['name']
       },
       scopedSlots: {
         nodeTemplate: function(props){
@@ -76,12 +76,12 @@ describe('TreeBody', () => {
   })
 
   describe('Leaf template provided', () => {
-    const data = [{ name: 'Simba', children: [{name: 'Kiara', children: [{name: 'Koda'}]}] }, {name: 'Skaza'}]
+    const tableData = [{ name: 'Simba',  uuid: '123', children: [{name: 'Kiara',uuid: '1234', children: [{name: 'Koda',uuid: '12345'}]}] }, {name: 'Skaza',uuid: '123456'}]
 
     const wrapper = mount(TreeBody, {
       propsData: {
-        data,
-        columns: [{id: 'name', label: 'Name'}]
+        tableData,
+        columns: ['name']
       },
       scopedSlots: {
         lefTemplate: function(props){

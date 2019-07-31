@@ -24,7 +24,7 @@
       },
       defaultOrder: {
         type: Array,
-        default: () => { return {} }
+        default: () => { return [] }
       },
       depth: {
         type: Number,

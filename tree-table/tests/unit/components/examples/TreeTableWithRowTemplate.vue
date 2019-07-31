@@ -1,7 +1,7 @@
 <template>
-  <tree-table class="table" :data="tableData" :columns="columns">
-    <template slot="rowTemplate" slot-scope="rowProps">
-      <tree-node-red :rowData="rowProps.rowData" :defaultOrder="rowProps.defaultOrder" />
+  <tree-table class="table" :table-data="tableData" :columns="columns">
+    <template #rowTemplate="rowProps">
+      <tree-node-red v-bind="rowProps" />
     </template>
   </tree-table>
 </template>

@@ -5,7 +5,7 @@
       :row-data="rowData"
       :default-order="defaultOrder"
       :depth="depth"
-      :onOpen="toggle"
+      :on-open="toggle"
     >
       <TreeDefaultNode
         :row-data="rowData"

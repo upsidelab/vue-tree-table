@@ -8,7 +8,7 @@
     </slot>
 
     <TreeBody
-      :data="data"
+      :table-data="tableData"
       :columns="columnsOrder"
     >
       <template #nodeTemplate="nodeProps">
@@ -32,14 +32,15 @@
 <script>
   import TreeBody from './TreeBody'
   import TreeTableHeader from './TreeTableHeader'
+  import { uuid } from 'vue-uuid';
 
   export default {
     name: 'TreeTable',
     components: {TreeBody, TreeTableHeader},
     props: {
-      data: {
+      tableData: {
         type: Array,
-        default: () => { return {} }
+        default: () => { return [] }
       },
       columns: {
         type: Array,
@@ -49,8 +50,22 @@
     computed: {
       columnsOrder(){
         return this.columns.map(column => column.id);
+      },
+    },
+    created() {
+        this.enrichTableData()
+    },
+    methods: {
+      addUniqueId(data){
+        data.uuid = uuid.v4()
+        if (data.children) {
+            data.children.forEach(child => this.addUniqueId(child))
+        }
+      },
+      enrichTableData() {
+          this.tableData.forEach(el => this.addUniqueId(el))
       }
-    }
+    },
   }
 </script>
 

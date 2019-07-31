@@ -1,12 +1,12 @@
 <template>
   <div>
     <template
-      v-for="(rowData, index) in data"
-      :rowData="rowData"
+      v-for="rowData in tableData"
+      :row-data="rowData"
     >
       <tree-node
         v-if="!isLeaf(rowData)"
-        :key="index"
+        :key="rowData.uuid"
         :row-data="rowData"
         :depth="0"
         :default-order="columns"
@@ -28,7 +28,7 @@
 
       <tree-leaf
         v-if="isLeaf(rowData)"
-        :key="index"
+        :key="rowData.uuid"
         :row-data="rowData"
         :depth="0"
         :default-order="columns"
@@ -53,7 +53,7 @@
     name: 'TreeBody',
     components: {TreeLeaf, TreeNode},
     props: {
-      data: {
+      tableData: {
         type: Array,
         default: function(){ return [] }
       },
