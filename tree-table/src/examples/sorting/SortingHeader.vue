@@ -10,10 +10,10 @@
         v-if="sortingKeys.includes(column.id)"
         class="controls"
       >
-        <div @click="sortChildrenBy({key: column.id, asc: true})">
+        <div @click="sortTable({key: column.id, asc: true})">
           ^
         </div>
-        <div @click="sortChildrenBy({key: column.id, asc: false})">
+        <div @click="sortTable({key: column.id, asc: false})">
           v
         </div>
       </div>
@@ -23,8 +23,6 @@
 
 
 <script>
-    import sortTable from "./sortTable";
-
     export default {
         name: 'SortingHeader',
         props: {
@@ -32,9 +30,9 @@
                 type: Array,
                 default: () => { return [] }
             },
-            tableData: {
-                type: Array,
-                default: () => { return [] }
+            sortTable: {
+                type: Function,
+                default: () => {}
             },
         },
         computed: {
@@ -44,11 +42,6 @@
             sortingKeys(){
                 return this.columnsIds.slice(0,2)
             }
-        },
-        methods : {
-            sortChildrenBy(params) {
-                sortTable(this.tableData, params)
-            },
         }
     }
 </script>

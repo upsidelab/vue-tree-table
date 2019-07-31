@@ -1,4 +1,4 @@
-export default function sortTable(table, { key, asc = true }) {
+export default function sortData(table, { key, asc = true }) {
     table.sort(function (a, b) {
         if (a[key] === b[key]) return 0
 

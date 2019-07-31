@@ -2,10 +2,13 @@
   <tree-table
     class="table"
     :columns="columns"
-    :tableData="tableData"
+    :table-data="tableData"
   >
     <template #headerTemplate="headerProps">
-      <SortingHeader v-bind="headerProps" />
+      <SortingHeader
+        v-bind="headerProps"
+        :sort-table="sortTable"
+      />
     </template>
 
     <template #nodeTemplate="nodeProps">
@@ -19,9 +22,10 @@
     import SortingNode from './SortingNode'
     import SortingHeader from "./SortingHeader";
     import data from './data'
+    import sortData from "./sortData";
 
     export default {
-        name: 'HelloWorld',
+        name: 'SortingExample',
         components: {TreeTable, SortingNode, SortingHeader},
         props: {
         },
@@ -30,6 +34,11 @@
                 tableData: data.tableData,
                 columns: data.columns
             }
+        },
+        methods: {
+            sortTable(params) {
+                sortData(this.tableData, params)
+            },
         }
     }
 </script>
