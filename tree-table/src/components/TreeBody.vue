@@ -2,7 +2,7 @@
   <div>
     <template
       v-for="rowData in tableData"
-      :rowData="rowData"
+      :row-data="rowData"
     >
       <tree-node
         v-if="!isLeaf(rowData)"
