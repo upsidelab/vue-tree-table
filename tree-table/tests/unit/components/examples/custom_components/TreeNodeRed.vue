@@ -1,5 +1,5 @@
 <template>
-  <tree-default-node class="tree-row--red" :rowData="rowData" :defaultOrder="defaultOrder" :depth="depth" :onOpen="onOpen"/>
+  <tree-default-node class="tree-row--red" :row-data="rowData" :default-order="defaultOrder" :depth="depth" :on-open="onOpen"/>
 </template>
 
 <script>

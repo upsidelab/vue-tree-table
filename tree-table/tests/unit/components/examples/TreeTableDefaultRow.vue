@@ -1,6 +1,5 @@
 <template>
-  <tree-table class="table" :tableData="tableData" :columns="columns">
-  </tree-table>
+  <tree-table class="table" :table-data="tableData" :columns="columns"/>
 </template>
 
 <script>
