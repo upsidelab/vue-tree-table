@@ -17,6 +17,8 @@
 </template>
 
 <script>
+    import {uuid} from "vue-uuid";
+
     export default {
         name: 'FoodCalculatorLeaf',
         props: {
@@ -36,6 +38,9 @@
                 type: Function,
                 default: () => {}
             },
+        },
+        created() {
+            this.rowData.uuid = uuid.v4()
         }
     }
 </script>

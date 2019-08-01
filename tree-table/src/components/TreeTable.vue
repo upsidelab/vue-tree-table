@@ -32,6 +32,7 @@
 <script>
   import TreeBody from './TreeBody'
   import TreeTableHeader from './TreeTableHeader'
+  import { uuid } from 'vue-uuid';
 
   export default {
     name: 'TreeTable',
@@ -50,6 +51,20 @@
       columnsOrder(){
         return this.columns.map(column => column.id);
       },
+    },
+    created() {
+        this.enrichTableData()
+    },
+    methods: {
+      addUniqueId(data){
+        data.uuid = uuid.v4()
+        if (data.children) {
+            data.children.forEach(child => this.addUniqueId(child))
+        }
+      },
+      enrichTableData() {
+          this.tableData.forEach(el => this.addUniqueId(el))
+      }
     },
   }
 </script>

@@ -36,6 +36,8 @@
 
 <script>
 
+    import {uuid} from "vue-uuid";
+
     export default {
         name: 'FoodCalculatorNode',
         props: {
@@ -102,6 +104,9 @@
                 this.isOpen = !this.isOpen
                 this.onToggle()
             }
+        },
+        created() {
+            this.rowData.uuid = uuid.v4()
         }
     }
 </script>
