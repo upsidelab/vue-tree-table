@@ -25,7 +25,7 @@ const tableData = [
     },
     {
         day: '2 Feb',
-        day_name: 'Tue',
+        day_name: 'Tue',  carbs: 0, proteins: 0, fat: 0, kcal: 0,
         children: [
             {
                 meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
@@ -49,7 +49,7 @@ const tableData = [
     },
     {
         day: '3 Feb',
-        day_name: 'Wed',
+        day_name: 'Wed',  carbs: 0, proteins: 0, fat: 0, kcal: 0,
         children: [
             {
                 meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
@@ -73,7 +73,7 @@ const tableData = [
     },
     {
         day: '4 Feb',
-        day_name: 'Thu',
+        day_name: 'Thu',  carbs: 0, proteins: 0, fat: 0, kcal: 0,
         children: [
             {
                 meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
@@ -97,7 +97,7 @@ const tableData = [
     },
     {
         day: '5 Feb',
-        day_name: 'Fri',
+        day_name: 'Fri',  carbs: 0, proteins: 0, fat: 0, kcal: 0,
         children: [
             {
                 meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
