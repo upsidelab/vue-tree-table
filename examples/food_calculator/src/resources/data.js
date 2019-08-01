@@ -26,22 +26,98 @@ const tableData = [
     {
         day: '2 Feb',
         day_name: 'Tue',
-        children: []
+        children: [
+            {
+                meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            },
+            {
+                meal: 'dinner', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            }
+        ]
     },
     {
         day: '3 Feb',
         day_name: 'Wed',
-        children: []
+        children: [
+            {
+                meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            },
+            {
+                meal: 'dinner', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            }
+        ]
     },
     {
         day: '4 Feb',
         day_name: 'Thu',
-        children: []
+        children: [
+            {
+                meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            },
+            {
+                meal: 'dinner', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            }
+        ]
     },
     {
         day: '5 Feb',
         day_name: 'Fri',
-        children: []
+        children: [
+            {
+                meal: 'breakfast', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            },
+            {
+                meal: 'dinner', carbs: 0, proteins: 0, fat: 0, kcal: 0,
+                children: [
+                    {ingredient: 'egg', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'bread', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'sauce', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                    {ingredient: 'tea', carbs: 12, proteins: 24, fat: 10, kcal: 300},
+                ]
+            }
+        ]
     }
 ]
 

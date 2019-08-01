@@ -5,7 +5,14 @@
             :table-data="tableData"
     >
         <template #nodeTemplate="nodeProps">
-            <food-calculator-node v-bind="nodeProps" :keys-to-calculate="keysToCalculate"/>
+            <food-calculator-node v-bind="nodeProps"
+                                  :should-modify-key="shouldModifyKeyFunction(nodeProps.depth)"
+                                  :calculate-values-from-children="calculateValuesFromChildren"/>
+        </template>
+
+        <template #leafTemplate="leafProps">
+            <food-calculator-leaf v-bind="leafProps"
+                                  :should-modify-key="shouldModifyKeyFunction(leafProps.depth)"/>
         </template>
     </tree-table>
 </template>
@@ -14,24 +21,35 @@
     import TreeTable from '../../../../tree-table/src/package'
     import data from '../resources/data'
     import FoodCalculatorNode from "./FoodCalculatorNode";
+    import FoodCalculatorLeaf from "./FoodCalculatorLeaf";
 
     export default {
         name: 'FoodCalculatorExample',
-        components: { TreeTable, FoodCalculatorNode },
+        components: { TreeTable, FoodCalculatorNode, FoodCalculatorLeaf },
         props: {
         },
         data: function() {
             return {
                 tableData: data.tableData,
-                columns: data.columns
-            }
-        },
-        computed: {
-            keysToCalculate: function () {
-                return this.columns.map(el => el.id).slice(-4)
+                columns: data.columns,
+                filedModification: {
+                    0: ['day', 'day_name'],
+                    1: ['meal'],
+                    2: ['ingredient', 'carbs','proteins', 'fat', 'kcal']
+                },
+                keysToCalculate: ['carbs','proteins', 'fat', 'kcal']
             }
         },
         methods: {
+            shouldModifyKeyFunction(depth){
+                const keysToModify = this.filedModification[depth] || []
+                return (key) => keysToModify(depth).includes(key)
+            },
+            calculateValuesFromChildren(node){
+                this.keysToCalculate.forEach(key => {
+                    node[key] =  node.children.reduce((acc, child) => acc + child[key], 0)
+                })
+            },
             calculateNodeValueForKey(node,key){
                 if (!node.children) return
 

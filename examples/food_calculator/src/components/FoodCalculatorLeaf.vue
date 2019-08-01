@@ -1,15 +1,16 @@
 <template>
     <div class="row">
         <div
-                class="indentation"
-                :style="{ width: leftPadding + 'px' }"
-        />
-        <div
                 v-for="key in defaultOrder"
                 :key="key"
                 class="cell"
         >
-            {{ rowData[key] }}
+            <input
+                    class="input"
+                    v-if="shouldModifyKey(key)"
+                    v-model.number="rowData[key]"
+            >
+            <div v-else> {{ rowData[key] }} </div>
         </div>
     </div>
 </template>
@@ -29,7 +30,11 @@
             depth: {
                 type: Number,
                 default: 0
-            }
+            },
+            shouldModifyKey:{
+                type: Function,
+                default: () => {}
+            },
         },
         computed: {
             leftPadding: function () {
@@ -40,6 +45,11 @@
 </script>
 
 <style scoped>
+    input {
+        width: 60px;
+        display: inline-flex;
+        border: none
+    }
     .row{
         display: flex;
         flex-flow: row wrap;

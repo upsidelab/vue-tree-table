@@ -22,7 +22,12 @@
                 :key="key"
                 class="cell"
         >
-            <div> {{ rowData[key] }} </div>
+            <input
+                class="input"
+                v-if="shouldModifyKey(key)"
+                v-model="rowData[key]"
+            >
+            <div v-else> {{ rowData[key] }} </div>
         </div>
     </div>
 </template>
@@ -44,20 +49,21 @@
                     return []
                 }
             },
-            keysToCalculate: {
-                type: Array,
-                default: () => {
-                    return []
-                }
-            },
             depth: {
                 type: Number,
                 default: 0
             },
+            shouldModifyKey:{
+                type: Function,
+                default: () => {}
+            },
+            calculateValuesFromChildren:{
+                type: Function,
+                default: () => {}
+            },
             onOpen: {
                 type: Function,
-                default: () => {
-                }
+                default: () => {}
             }
         },
         data: function () {
@@ -77,19 +83,11 @@
             'rowData.children': {
                 deep: true,
                 handler() {
-                    this.calculateValues()
+                    this.calculateValuesFromChildren(this.rowData)
                 }
             }
         },
         methods: {
-            calculateValueForKey(key){
-                return this.rowData.children.reduce((acc, child) => acc + child[key], 0)
-            },
-            calculateValues(){
-                this.keysToCalculate.forEach(key => {
-                    this.rowData[key] =  this.calculateValueForKey(key)
-                })
-            },
             toggle() {
                 this.isOpen = !this.isOpen
                 this.onOpen()
@@ -99,6 +97,10 @@
 </script>
 
 <style scoped>
+    input {
+        display: inline-flex;
+        border: none
+    }
     .row {
         display: flex;
         flex-flow: row wrap;
