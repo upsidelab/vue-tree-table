@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div @click="addNodeAndOpen()">+</div>
+        <div @click="addNode(0)(tableData)">+</div>
         <tree-table
                 class="table"
                 :columns="columns"
