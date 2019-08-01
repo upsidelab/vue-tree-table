@@ -5,13 +5,17 @@
       :row-data="rowData"
       :default-order="defaultOrder"
       :depth="depth"
-      :on-open="toggle"
+      :on-open="open"
+      :on-toggle="toggle"
+      :on-close="close"
     >
       <TreeDefaultNode
         :row-data="rowData"
         :default-order="defaultOrder"
         :depth="depth"
-        :on-open="toggle"
+        :on-open="open"
+        :on-toggle="toggle"
+        :on-close="close"
       />
     </slot>
 
@@ -94,6 +98,12 @@
       },
       toggle(){
         this.isOpen = !this.isOpen
+      },
+      open(){
+          this.isOpen = true
+      },
+      close(){
+          this.isOpen = false
       }
     }
   }
