@@ -17,6 +17,7 @@
 
 <script>
   import TreeDefaultLeaf from './TreeDefaultLeaf'
+  import { uuid } from 'vue-uuid';
   export default {
     name: 'TreeLeaf',
     components: {TreeDefaultLeaf},
@@ -33,6 +34,9 @@
         type: Number,
         default: 0
       }
+    },
+    created() {
+        this.rowData.uuid = uuid.v4()
     }
   }
 </script>
