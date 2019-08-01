@@ -69,7 +69,6 @@
   import TreeLeaf from './TreeLeaf'
   import isLeafFunc from '../utils/isLeaf'
   import TreeDefaultNode from './TreeDefaultNode'
-  import { uuid } from 'vue-uuid';
 
   export default {
     name: 'TreeNode',
@@ -106,9 +105,6 @@
       close(){
           this.isOpen = false
       }
-    },
-    created() {
-        this.rowData.uuid = uuid.v4()
     }
   }
 </script>

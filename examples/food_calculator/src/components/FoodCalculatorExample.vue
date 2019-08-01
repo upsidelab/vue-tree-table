@@ -1,22 +1,26 @@
 <template>
-    <tree-table
-            class="table"
-            :columns="columns"
-            :table-data="tableData"
-    >
-        <template #nodeTemplate="nodeProps">
-            <food-calculator-node v-bind="nodeProps"
-                                  :should-modify-key="shouldModifyKeyFunction(nodeProps.depth)"
-                                  :delete-node="deleteNode"
-                                  :calculate-values-from-children="calculateValuesFromChildren"/>
-        </template>
+    <div>
+        <div @click="addNodeAndOpen()">+</div>
+        <tree-table
+                class="table"
+                :columns="columns"
+                :table-data="tableData"
+        >
+            <template #nodeTemplate="nodeProps">
+                <food-calculator-node v-bind="nodeProps"
+                                      :should-modify-key="shouldModifyKeyFunction(nodeProps.depth)"
+                                      :delete-node="deleteNode"
+                                      :add-node="addNode(nodeProps.depth)"
+                                      :calculate-values-from-children="calculateValuesFromChildren"/>
+            </template>
 
-        <template #leafTemplate="leafProps">
-            <food-calculator-leaf v-bind="leafProps"
-                                  :delete-node="deleteNode"
-                                  :should-modify-key="shouldModifyKeyFunction(leafProps.depth)"/>
-        </template>
-    </tree-table>
+            <template #leafTemplate="leafProps">
+                <food-calculator-leaf v-bind="leafProps"
+                                      :delete-node="deleteNode"
+                                      :should-modify-key="shouldModifyKeyFunction(leafProps.depth)"/>
+            </template>
+        </tree-table>
+    </div>
 </template>
 
 <script>
@@ -43,6 +47,19 @@
             }
         },
         methods: {
+            basicNode() {
+                return {
+                    day: '', day_name: '', meal: '', ingredient: '', carbs: 0, proteins: 0, fat: 0, kcal: 0
+                }
+            },
+            emptyNode(level){
+                if (level === 1) return this.basicNode()
+
+                return {...this.basicNode(), children: []}
+            },
+            addNode(level){
+                return (array) => array.push(this.emptyNode(level))
+            },
             deleteNode(uuid){
                 this.deleteFromTable(this.tableData, uuid)
             },

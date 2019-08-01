@@ -28,10 +28,6 @@
                 type: Array,
                 default: () => { return [] }
             },
-            depth: {
-                type: Number,
-                default: 0
-            },
             shouldModifyKey:{
                 type: Function,
                 default: () => {}
@@ -40,11 +36,6 @@
                 type: Function,
                 default: () => {}
             },
-        },
-        computed: {
-            leftPadding: function () {
-                return this.depth*15
-            }
         }
     }
 </script>
@@ -73,12 +64,5 @@
         box-sizing: border-box;
         margin-top: -1px;
         margin-left: -1px;
-    }
-
-    .indentation{
-        border: solid 0.5px silver;
-        border-left: none;
-        border-right: none;
-        margin-top: -1px;
     }
 </style>

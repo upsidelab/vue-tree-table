@@ -30,7 +30,7 @@
             <div v-else> {{ rowData[key] }} </div>
         </div>
         <div @click="deleteNode(rowData.uuid)">X</div>
-        <div @click="addNode()">+</div>
+        <div @click="addNodeAndOpen()">+</div>
     </div>
 </template>
 
@@ -51,10 +51,6 @@
                     return []
                 }
             },
-            depth: {
-                type: Number,
-                default: 0
-            },
             shouldModifyKey:{
                 type: Function,
                 default: () => {}
@@ -67,7 +63,15 @@
                 type: Function,
                 default: () => {}
             },
+            onToggle: {
+                type: Function,
+                default: () => {}
+            },
             deleteNode: {
+                type: Function,
+                default: () => {}
+            },
+            addNode: {
                 type: Function,
                 default: () => {}
             }
@@ -75,14 +79,6 @@
         data: function () {
             return {
                 isOpen: false
-            }
-        },
-        computed: {
-            columnWithOpenButton: function () {
-                return this.defaultOrder[0]
-            },
-            childrenColumns: function () {
-                return this.defaultOrder.slice(2)
             }
         },
         watch: {
@@ -94,14 +90,17 @@
             }
         },
         methods: {
-            addNode(){
-                this.rowData.children.push(
-                    {ingredient: '', carbs: 0, proteins: 0, fat: 0, kcal: 0},
-                )
+            addNodeAndOpen() {
+                this.addNode(this.rowData.children)
+                this.open()
+            },
+            open() {
+                this.isOpen = true
+                this.onOpen()
             },
             toggle() {
                 this.isOpen = !this.isOpen
-                this.onOpen()
+                this.onToggle()
             }
         }
     }
