@@ -12,6 +12,7 @@
             >
             <div v-else> {{ rowData[key] }} </div>
         </div>
+        <div @click="deleteNode(rowData.uuid)">X</div>
     </div>
 </template>
 
@@ -32,6 +33,10 @@
                 default: 0
             },
             shouldModifyKey:{
+                type: Function,
+                default: () => {}
+            },
+            deleteNode:{
                 type: Function,
                 default: () => {}
             },

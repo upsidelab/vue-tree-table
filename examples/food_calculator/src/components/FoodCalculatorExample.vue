@@ -7,11 +7,13 @@
         <template #nodeTemplate="nodeProps">
             <food-calculator-node v-bind="nodeProps"
                                   :should-modify-key="shouldModifyKeyFunction(nodeProps.depth)"
+                                  :delete-node="deleteNode"
                                   :calculate-values-from-children="calculateValuesFromChildren"/>
         </template>
 
         <template #leafTemplate="leafProps">
             <food-calculator-leaf v-bind="leafProps"
+                                  :delete-node="deleteNode"
                                   :should-modify-key="shouldModifyKeyFunction(leafProps.depth)"/>
         </template>
     </tree-table>
@@ -41,6 +43,17 @@
             }
         },
         methods: {
+            deleteNode(uuid){
+                this.deleteFromTable(this.tableData, uuid)
+            },
+            deleteFromTable(table,uuid){
+                if (!table) return
+
+                const index = table.findIndex(el => el.uuid === uuid)
+                index > -1 ?
+                    table.splice(index, 1) :
+                    table.forEach(el => this.deleteFromTable(el.children,uuid))
+            },
             shouldModifyKeyFunction(depth){
                 const keysToModify = this.filedModification[depth] || []
                 return (key) => keysToModify.includes(key)
