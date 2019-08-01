@@ -43,7 +43,7 @@
         methods: {
             shouldModifyKeyFunction(depth){
                 const keysToModify = this.filedModification[depth] || []
-                return (key) => keysToModify(depth).includes(key)
+                return (key) => keysToModify.includes(key)
             },
             calculateValuesFromChildren(node){
                 this.keysToCalculate.forEach(key => {
@@ -51,13 +51,12 @@
                 })
             },
             calculateNodeValueForKey(node,key){
-                if (!node.children) return
+                if (!node.children) return node[key]
 
-                node[key] = 0
-                node.children.forEach(child => {
-                       this.calculateNodeValueForKey(child, key)
-                       node[key]+=child[key]
-                })
+                return node[key] = node.children.reduce(
+                    (acc, child) => acc + this.calculateNodeValueForKey(child, key),
+                    0
+                )
             },
             calculateValuesForNode(node){
                 this.keysToCalculate.forEach(key => {
