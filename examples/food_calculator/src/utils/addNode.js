@@ -1,6 +1,7 @@
 import { uuid } from 'vue-uuid'
 
-const emptyNodeData = {
+const emptyNodeData = function(){
+    return {
         day: '',
         day_name: '',
         meal: '',
@@ -10,12 +11,13 @@ const emptyNodeData = {
         fat: 0,
         kcal: 0,
         uuid: uuid.v4()
+    }
 }
 
 const emptyNode = function(level){
-    if (level === 1) return emptyNodeData
+    if (level === 1) return emptyNodeData()
 
-    return {...emptyNodeData, children: []}
+    return {...emptyNodeData(), children: []}
 }
 
 export default function(level){
