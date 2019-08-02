@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div @click="addNode(0)(tableData)">+</div>
+        <div @click="addNode(topLevel)(tableData)">+</div>
         <tree-table
                 class="table"
                 :columns="columns"
@@ -8,16 +8,16 @@
         >
             <template #nodeTemplate="nodeProps">
                 <food-calculator-node v-bind="nodeProps"
-                                      :should-modify-key="shouldModifyKeyFunction(nodeProps.depth)"
+                                      :is-key-editable="isKeyEditable(nodeProps.depth)"
                                       :delete-node="deleteNode"
                                       :add-node="addNode(nodeProps.depth)"
-                                      :calculate-values-from-children="calculateValuesFromChildren"/>
+                                      :keys-to-calculate="keysToCalculate"/>
             </template>
 
             <template #leafTemplate="leafProps">
                 <food-calculator-leaf v-bind="leafProps"
                                       :delete-node="deleteNode"
-                                      :should-modify-key="shouldModifyKeyFunction(leafProps.depth)"/>
+                                      :is-key-editable="isKeyEditable(leafProps.depth)"/>
             </template>
         </tree-table>
     </div>
@@ -28,6 +28,9 @@
     import data from '../resources/data'
     import FoodCalculatorNode from "./FoodCalculatorNode";
     import FoodCalculatorLeaf from "./FoodCalculatorLeaf";
+    import addNode from "../utils/addNode";
+    import deleteNodeRecursively from "../utils/deleteNodeRecursively";
+    import computeInitialValues from "../utils/computeInitialValues";
 
     export default {
         name: 'FoodCalculatorExample',
@@ -38,7 +41,7 @@
             return {
                 tableData: data.tableData,
                 columns: data.columns,
-                filedModification: {
+                editableFields: {
                     0: ['day', 'day_name'],
                     1: ['meal'],
                     2: ['ingredient', 'carbs','proteins', 'fat', 'kcal']
@@ -46,59 +49,21 @@
                 keysToCalculate: ['carbs','proteins', 'fat', 'kcal']
             }
         },
+        computed: {
+          topLevel: function(){ return 0 }
+        },
         methods: {
-            basicNode() {
-                return {
-                    day: '', day_name: '', meal: '', ingredient: '', carbs: 0, proteins: 0, fat: 0, kcal: 0
-                }
-            },
-            emptyNode(level){
-                if (level === 1) return this.basicNode()
-
-                return {...this.basicNode(), children: []}
-            },
-            addNode(level){
-                return (array) => array.push(this.emptyNode(level))
-            },
+            addNode,
             deleteNode(uuid){
-                this.deleteFromTable(this.tableData, uuid)
+                deleteNodeRecursively(this.tableData, uuid)
             },
-            deleteFromTable(table,uuid){
-                if (!table) return
-
-                const index = table.findIndex(el => el.uuid === uuid)
-                index > -1 ?
-                    table.splice(index, 1) :
-                    table.forEach(el => this.deleteFromTable(el.children,uuid))
+            isKeyEditable(depth){
+                const editableFields = this.editableFields[depth] || []
+                return (key) => editableFields.includes(key)
             },
-            shouldModifyKeyFunction(depth){
-                const keysToModify = this.filedModification[depth] || []
-                return (key) => keysToModify.includes(key)
-            },
-            calculateValuesFromChildren(node){
-                this.keysToCalculate.forEach(key => {
-                    node[key] =  node.children.reduce((acc, child) => acc + child[key], 0)
-                })
-            },
-            calculateNodeValueForKey(node,key){
-                if (!node.children) return node[key]
-
-                return node[key] = node.children.reduce(
-                    (acc, child) => acc + this.calculateNodeValueForKey(child, key),
-                    0
-                )
-            },
-            calculateValuesForNode(node){
-                this.keysToCalculate.forEach(key => {
-                   this.calculateNodeValueForKey(node,key)
-                })
-            },
-            computeInitialValuesForTable() {
-                this.tableData.forEach(el => this.calculateValuesForNode(el))
-            }
         },
         created() {
-            this.computeInitialValuesForTable()
+            computeInitialValues(this.tableData, this.keysToCalculate)
         }
     }
 </script>

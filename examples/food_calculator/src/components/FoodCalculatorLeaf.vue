@@ -7,7 +7,7 @@
         >
             <input
                     class="input"
-                    v-if="shouldModifyKey(key)"
+                    v-if="isKeyEditable(key)"
                     v-model.number="rowData[key]"
             >
             <div v-else> {{ rowData[key] }} </div>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-    import {uuid} from "vue-uuid";
 
     export default {
         name: 'FoodCalculatorLeaf',
@@ -30,7 +29,7 @@
                 type: Array,
                 default: () => { return [] }
             },
-            shouldModifyKey:{
+            isKeyEditable:{
                 type: Function,
                 default: () => {}
             },
@@ -38,9 +37,6 @@
                 type: Function,
                 default: () => {}
             },
-        },
-        created() {
-            this.rowData.uuid = uuid.v4()
         }
     }
 </script>

@@ -24,7 +24,7 @@
         >
             <input
                 class="input"
-                v-if="shouldModifyKey(key)"
+                v-if="isKeyEditable(key)"
                 v-model="rowData[key]"
             >
             <div v-else> {{ rowData[key] }} </div>
@@ -35,8 +35,6 @@
 </template>
 
 <script>
-
-    import {uuid} from "vue-uuid";
 
     export default {
         name: 'FoodCalculatorNode',
@@ -53,13 +51,15 @@
                     return []
                 }
             },
-            shouldModifyKey:{
+            isKeyEditable:{
                 type: Function,
                 default: () => {}
             },
-            calculateValuesFromChildren:{
-                type: Function,
-                default: () => {}
+            keysToCalculate:{
+                type: Array,
+                default: () => {
+                    return []
+                }
             },
             onOpen: {
                 type: Function,
@@ -92,6 +92,11 @@
             }
         },
         methods: {
+            calculateValuesFromChildren(){
+                this.keysToCalculate.forEach(key => {
+                    this.rowData[key] =  this.rowData.children.reduce((acc, child) => acc + child[key], 0)
+                })
+            },
             addNodeAndOpen() {
                 this.addNode(this.rowData.children)
                 this.open()
@@ -104,9 +109,6 @@
                 this.isOpen = !this.isOpen
                 this.onToggle()
             }
-        },
-        created() {
-            this.rowData.uuid = uuid.v4()
         }
     }
 </script>
