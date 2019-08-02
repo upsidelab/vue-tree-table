@@ -54,7 +54,15 @@
         type: Number,
         default: 0
       },
+      onToggle: {
+        type: Function,
+        default: () => {}
+      },
       onOpen: {
+        type: Function,
+        default: () => {}
+      },
+      onClose: {
         type: Function,
         default: () => {}
       }
@@ -78,7 +86,7 @@
     methods: {
       toggle(){
         this.isOpen = !this.isOpen
-        this.onOpen()
+        this.onToggle()
       }
     }
   }
