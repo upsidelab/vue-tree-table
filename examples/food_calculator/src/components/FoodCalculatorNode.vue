@@ -87,7 +87,7 @@
             'rowData.children': {
                 deep: true,
                 handler() {
-                    this.calculateValuesFromChildren(this.rowData)
+                    this.calculateValuesFromChildren()
                 }
             }
         },
