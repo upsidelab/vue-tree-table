@@ -1,5 +1,5 @@
 function isLeaf(rowData){
-  if( !rowData.children || rowData.children.length == 0 ){
+  if( !rowData.children ){
     return true
   }
   return false
