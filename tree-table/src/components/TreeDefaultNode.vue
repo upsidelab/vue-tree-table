@@ -14,13 +14,11 @@
             v-if="!isOpen"
             class="closed"
           >
-            >
           </div>
           <div
             v-if="isOpen"
-            class="opened"
+            class="open"
           >
-            v
           </div>
         </div>
         <div>
@@ -80,7 +78,7 @@
         return this.defaultOrder.slice(1)
       },
       leftPadding: function () {
-        return this.depth*15
+        return this.depth*16
       }
     },
     methods: {
@@ -93,34 +91,19 @@
 </script>
 
 <style scoped>
-  .row{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    padding-left: 15px;
-    border: solid 0.5px silver;
-    border-left: none;
-    border-right: none;
-    margin-top: -1px;
-  }
-
-  .indentation{
-    border: solid 0.5px silver;
-    border-left: none;
-    border-right: none;
-    margin-top: -1px;
-  }
-
-  .cell{
-    text-align: left;
-    flex-grow: 1;
-    flex-basis: 0;
-    box-sizing: border-box;
-  }
+  @import "common.css";
 
   .open-button{
     float: left;
     display: inline;
-    margin-right: 10px;
+    padding-right: 0.5rem;
+  }
+
+  .closed::before{
+    content: "▸";
+  }
+
+  .open::before{
+    content: "▾";
   }
 </style>
