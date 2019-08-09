@@ -9,16 +9,21 @@
       <MenuLeaf v-bind="leafProps" />
     </template>
 
+    <template #nodeTemplate="nodeProps">
+      <MenuNode v-bind="nodeProps" />
+    </template>
+
   </tree-table>
 </template>
 
 <script>
   import TreeTable from '../../../../tree-table/src/package'
   import MenuLeaf from './MenuLeaf'
+  import MenuNode from './MenuNode'
 
   export default {
     name: 'MenuExample',
-    components: {MenuLeaf, TreeTable},
+    components: {MenuNode, MenuLeaf, TreeTable},
     data: function(){
       return {
         tableData: [
@@ -34,7 +39,8 @@
 
 <style scoped>
   .table{
-    width: 15%;
+    width: 25%;
     margin: auto;
+    color: #0F084B;
   }
 </style>
