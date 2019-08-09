@@ -1,25 +1,29 @@
 <template>
     <div>
-        <div @click="addNode(topLevel)(tableData)">+</div>
         <tree-table
                 class="table"
                 :columns="columns"
                 :table-data="tableData"
         >
+            <template #headerTemplate="headerProps">
+                <food-calculator-table-header v-bind="headerProps" />
+            </template>
+
             <template #nodeTemplate="nodeProps">
                 <food-calculator-node v-bind="nodeProps"
                                       :is-key-editable="isKeyEditable(nodeProps.depth)"
                                       :delete-node="deleteNode"
                                       :add-node="addNode(nodeProps.depth)"
-                                      :keys-to-calculate="keysToCalculate"/>
+                                      :keys-to-calculate="keysToCalculate" :columns="columns"/>
             </template>
 
             <template #leafTemplate="leafProps">
                 <food-calculator-leaf v-bind="leafProps"
                                       :delete-node="deleteNode"
-                                      :is-key-editable="isKeyEditable(leafProps.depth)"/>
+                                      :is-key-editable="isKeyEditable(leafProps.depth)" :columns="columns"/>
             </template>
         </tree-table>
+        <div class="add-button" @click="addNode(topLevel)(tableData)">Add new record</div>
     </div>
 </template>
 
@@ -31,10 +35,11 @@
     import addNode from "../utils/addNode";
     import deleteNodeRecursively from "../utils/deleteNodeRecursively";
     import computeInitialValues from "../utils/computeInitialValues";
+    import FoodCalculatorTableHeader from './FoodCalculatorTableHeader'
 
     export default {
         name: 'FoodCalculatorExample',
-        components: { TreeTable, FoodCalculatorNode, FoodCalculatorLeaf },
+        components: {FoodCalculatorTableHeader, TreeTable, FoodCalculatorNode, FoodCalculatorLeaf },
         props: {
         },
         data: function() {
@@ -70,7 +75,17 @@
 
 <style scoped>
     .table{
-        width: 40%;
+        width: 70%;
         margin: auto;
+    }
+
+    .add-button{
+        width: 70%;
+        margin: auto;
+        text-align: right;
+        color: green;
+        padding: 1rem;
+        padding-right: 2.5rem;
+        font-weight: bold;
     }
 </style>

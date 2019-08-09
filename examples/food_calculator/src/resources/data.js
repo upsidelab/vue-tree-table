@@ -122,14 +122,16 @@ const tableData = [
 ]
 
 const columns = [
-    {id: 'day', label: 'Nr'},
-    {id: 'day_name', label: 'Day'},
-    {id: 'meal', label: 'Meal'},
-    {id: 'ingredient', label: 'Ingredient'},
-    {id: 'carbs', label: 'Carbs (g)'},
-    {id: 'proteins', label: 'Proteins (g)'},
-    {id: 'fat', label: 'Fat (g)'},
-    {id: 'kcal', label: 'Calories (kcal)'}
+    {id: 'open_button', width: '0.2'},
+    {id: 'day', label: 'Nr', width: '0.8'},
+    {id: 'day_name', label: 'Day', width: '0.8'},
+    {id: 'meal', label: 'Meal', width: '1'},
+    {id: 'ingredient', label: 'Ingredient', width: '1.4'},
+    {id: 'carbs', label: 'Carbs (g)', width: '1'},
+    {id: 'proteins', label: 'Proteins (g)', width: '1.3'},
+    {id: 'fat', label: 'Fat (g)', width: '1'},
+    {id: 'kcal', label: 'Calories (kcal)', width: '1'},
+    {id: 'actions', width: '0.4'}
 ]
 
 export default {
