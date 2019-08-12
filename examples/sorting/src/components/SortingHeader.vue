@@ -10,11 +10,11 @@
         v-if="sortingKeys.includes(column.id)"
         class="controls"
       >
-        <div @click="sortTable({key: column.id, asc: true})">
-          ^
+        <div class="sort-button" @click="sortTable({key: column.id, asc: true})">
+          ▲
         </div>
-        <div @click="sortTable({key: column.id, asc: false})">
-          v
+        <div class="sort-button" @click="sortTable({key: column.id, asc: false})">
+          ▼
         </div>
       </div>
     </div>
@@ -23,54 +23,51 @@
 
 
 <script>
-    export default {
-        name: 'SortingHeader',
-        props: {
-            columns: {
-                type: Array,
-                default: () => { return [] }
-            },
-            sortTable: {
-                type: Function,
-                default: () => {}
-            },
-        },
-        computed: {
-            columnsIds(){
-                return this.columns.map(column => column.id);
-            },
-            sortingKeys(){
-                return this.columnsIds.slice(0,2)
-            }
-        }
+  export default {
+    name: 'SortingHeader',
+    props: {
+      columns: {
+        type: Array,
+        default: () => { return [] }
+      },
+      sortTable: {
+        type: Function,
+        default: () => {}
+      },
+    },
+    computed: {
+      columnsIds(){
+        return this.columns.map(column => column.id);
+      },
+      sortingKeys(){
+        return this.columnsIds.slice(0,2)
+      }
     }
+  }
 </script>
 
 <style scoped>
-    .row{
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        padding-left: 15px;
-        border: solid 0.5px silver;
-        border-left: none;
-        border-right: none;
-        margin-top: -1px;
-        background-color: aliceblue;
-    }
-    .controls{
-        display: flex;
-        margin-left: 5px;
-    }
-    .cell{
-        flex-grow: 1;
-        flex-basis: 0;
-        display: flex;
-        border: solid 0.5px silver;
-        border-left: none;
-        border-right: none;
-        box-sizing: border-box;
-        margin-top: -1px;
-        text-align: left;
-    }
+  @import "../../../../tree-table/src/components/common.css";
+  .row{
+    background-color: aliceblue;
+  }
+  .controls{
+    display: flex;
+    margin-left: 5px;
+    align-items: center;
+  }
+  .cell{
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+  }
+  .sort-button{
+    font-size: x-small;
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+  }
+
+  .sort-button:hover{
+    color: #cfcfcf;
+  }
 </style>
