@@ -48,6 +48,12 @@
     margin: auto;
   }
   .search{
-    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 40%;
+    text-align: right;
+    padding-right: 1rem;
+    font-size: 16px;
   }
 </style>
