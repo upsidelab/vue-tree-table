@@ -8,13 +8,11 @@
         v-if="!isOpen"
         class="closed"
       >
-        >
       </div>
       <div
         v-if="isOpen"
-        class="opened"
+        class="open"
       >
-        v
       </div>
     </div>
     <div
@@ -23,14 +21,14 @@
       class="cell"
     >
       <div
-        v-if="childrenColumns.includes(key)"
-        style="display: flex; flex-direction: row"
+        v-if="childrenColumns.includes(key) && isOpen"
+        class="sorting-buttons"
       >
-        <div @click="sortChildrenBy({key, asc: true})">
-          ^
+        <div class="sort-button" @click="sortChildrenBy({key, asc: true})">
+          ▲
         </div>
-        <div @click="sortChildrenBy({key, asc: false})">
-          v
+        <div class="sort-button" @click="sortChildrenBy({key, asc: false})">
+          ▼
         </div>
       </div>
       <div v-else>
@@ -94,27 +92,42 @@
 </script>
 
 <style scoped>
-    .row {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        padding-left: 15px;
-        border: solid 0.5px silver;
-        border-left: none;
-        border-right: none;
-        margin-top: -1px;
-    }
+  @import "../../../../tree-table/src/components/common.css";
 
-    .cell {
-        text-align: left;
-        flex-grow: 1;
-        flex-basis: 0;
-        box-sizing: border-box;
-    }
+  .open-button {
+    margin-right: 0.25rem;
+    margin-left: -0.5rem;
+    display: flex;
+    align-items: center;
+  }
 
-    .open-button {
-        float: left;
-        display: inline;
-        margin-right: 10px;
-    }
+  .open-button:hover{
+    color: #cfcfcf;
+  }
+
+  .closed::before{
+    content: "▸";
+  }
+
+  .open::before{
+    content: "▾";
+  }
+
+  .sorting-buttons{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+  }
+
+  .sort-button{
+    font-size: x-small;
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
+  }
+
+  .sort-button:hover{
+    color: #cfcfcf;
+  }
+
 </style>
