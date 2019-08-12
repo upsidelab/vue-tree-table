@@ -1,5 +1,5 @@
 <template>
-  <input v-model="searchQuery" @input="debouncedSearch" />
+  <input type="text" v-model="searchQuery" @input="debouncedSearch" />
 </template>
 
 <script>
@@ -45,5 +45,16 @@
 </script>
 
 <style scoped>
+  input[type=text]{
+    border: 0;
+    box-shadow: -8px 9px 0px -7px #ebebeb, 8px 9px 0px -7px #ebebeb;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+    font-size: 14px;
+  }
 
+  input[type=text]:focus {
+    outline: none;
+    box-shadow: -8px 9px 0px -7px #4EA6EA, 8px 9px 0px -7px #4EA6EA;
+  }
 </style>
