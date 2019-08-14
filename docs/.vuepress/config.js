@@ -3,8 +3,9 @@ module.exports = {
   description: 'Lightweight tree table Vue component',
   themeConfig: {
       sidebar: [
-          '/',
-          '/guide/',
+          'guide/installation',
+          'guide/',
+          'guide/customization'
       ]
   }
 }

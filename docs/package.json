@@ -4,6 +4,7 @@
     "docs:build": "vuepress build"
   },
   "devDependencies": {
-    "vuepress": "^1.0.3"
+    "vuepress": "^1.0.3",
+    "vue-uuid": "^1.1.1"
   }
 }
