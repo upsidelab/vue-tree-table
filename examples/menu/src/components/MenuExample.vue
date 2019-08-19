@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import TreeTable from '../../../../tree-table/src/package'
+  import TreeTable from 'vue-tree-table'
   import MenuLeaf from './MenuLeaf'
   import MenuNode from './MenuNode'
 
