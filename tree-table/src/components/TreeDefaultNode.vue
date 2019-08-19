@@ -13,13 +13,11 @@
           <div
             v-if="!isOpen"
             class="closed"
-          >
-          </div>
+          />
           <div
             v-if="isOpen"
             class="open"
-          >
-          </div>
+          />
         </div>
         <div>
           {{ rowData[columnWithOpenButton] }}
