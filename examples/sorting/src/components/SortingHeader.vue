@@ -47,7 +47,6 @@
 </script>
 
 <style scoped>
-  @import "../../../../tree-table/src/components/common.css";
   .row{
     background-color: aliceblue;
   }
