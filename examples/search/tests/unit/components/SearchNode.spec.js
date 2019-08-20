@@ -32,7 +32,12 @@ describe('Search Node', async () => {
           expect(onOpen).toHaveBeenCalled()
         })
 
-        it('retriggers search display event for its children', async() => {
+        it('emits hide event for its children', async () => {
+          await wrapper.vm.$nextTick()
+          expect(emitSpy).toHaveBeenCalledWith('search-hide-event', 'awesomeLeaf')
+        })
+
+        it('retriggers search display event for its children', async () => {
           await wrapper.vm.$nextTick()
           expect(emitSpy).toHaveBeenCalledWith('search-display-event', ['awesomeLeaf'])
         })

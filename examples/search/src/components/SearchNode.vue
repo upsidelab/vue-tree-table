@@ -43,7 +43,14 @@
         this.onOpen()
 
         this.$nextTick(() => {
+          this.hideAllChildren()
           this.eventHub.$emit('search-display-event', tail)
+        })
+      },
+      hideAllChildren(){
+        const childrenUuids = this.rowData.children.map((child) => child.uuid)
+        childrenUuids.forEach((uuid) => {
+          this.eventHub.$emit('search-hide-event', uuid)
         })
       },
       handleSearchResetEvent(){

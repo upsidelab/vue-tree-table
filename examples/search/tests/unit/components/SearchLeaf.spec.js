@@ -25,27 +25,15 @@ describe('SearchLeaf', () => {
     const rowData = { uuid: 'awesomeLeaf', name: 'Awesome Leaf' }
     const eventHub = new Vue()
 
-    describe('when 0 level', () => {
-      const wrapper = mount(SearchLeaf, { propsData: { rowData: rowData, depth: 0, defaultOrder: ['name'], eventHub: eventHub } })
-      wrapper.setData({isShown: false})
+    const wrapper = mount(SearchLeaf, { propsData: { rowData: rowData, depth: 0, defaultOrder: ['name'], eventHub: eventHub } })
+    wrapper.setData({isShown: false})
 
-      eventHub.$emit('search-reset')
+    eventHub.$emit('search-reset')
 
-      it('shows its content', () => {
-        expect(wrapper.text()).toEqual('Awesome Leaf')
-      })
+    it('shows its content', () => {
+      expect(wrapper.text()).toEqual('Awesome Leaf')
     })
 
-    describe('when > 0 level', () => {
-      const wrapper = mount(SearchLeaf, { propsData: { rowData: rowData, depth: 2, defaultOrder: ['name'], eventHub: eventHub } })
-      wrapper.setData({isShown: false})
-
-      eventHub.$emit('search-reset')
-
-      it('hides its content', () => {
-        expect(wrapper.text()).toEqual('')
-      })
-    })
   })
 
   describe('on search hide all', () => {
@@ -59,6 +47,35 @@ describe('SearchLeaf', () => {
     it('hides its content', () => {
       expect(wrapper.text()).toEqual('')
     })
+  })
+
+  describe('on search hide', () => {
+    const rowData = { uuid: 'awesomeLeaf', name: 'Awesome Leaf' }
+
+    describe('if matching uuid', () => {
+      const eventHub = new Vue()
+      const wrapper = mount(SearchLeaf, { propsData: { rowData: rowData, depth: 0, defaultOrder: ['name'], eventHub: eventHub } })
+      wrapper.setData({isShown: true})
+
+      eventHub.$emit('search-hide-event', 'awesomeLeaf')
+
+      it('hides its content', () => {
+        expect(wrapper.text()).toEqual('')
+      })
+    })
+
+    describe('if not matching uuid', () => {
+      const eventHub = new Vue()
+      const wrapper = mount(SearchLeaf, { propsData: { rowData: rowData, depth: 0, defaultOrder: ['name'], eventHub: eventHub } })
+      wrapper.setData({isShown: true})
+
+      eventHub.$emit('search-hide-event', 'notSoAwesomeLeaf')
+
+      it('still shows its content', () => {
+        expect(wrapper.text()).toEqual('Awesome Leaf')
+      })
+    })
+
   })
 
 })

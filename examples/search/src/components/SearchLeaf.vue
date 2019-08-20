@@ -39,11 +39,13 @@
       this.eventHub.$on('search-display-event', this.handleOpenEvent)
       this.eventHub.$on('search-reset', this.handleSearchResetEvent)
       this.eventHub.$on('search-hide-all', this.hide)
+      this.eventHub.$on('search-hide-event', this.handleHideEvent)
     },
     beforeDestroy: function(){
       this.eventHub.$off('search-display-event', this.handleOpenEvent)
       this.eventHub.$off('search-reset', this.handleSearchResetEvent)
       this.eventHub.$off('search-hide-all', this.hide)
+      this.eventHub.$off('search-hide-event', this.handleHideEvent)
     },
     methods: {
       handleOpenEvent(path){
@@ -54,15 +56,15 @@
       handleSearchResetEvent(){
         this.isShown = this.getIsShownDefault()
       },
+      handleHideEvent(uuid){
+        if( uuid !== this.uuid ){ return }
+        this.hide()
+      },
       hide(){
         this.isShown = false
       },
       getIsShownDefault(){
-        if( this.depth == 0 ){
-          return true
-        }else{
-          return false
-        }
+        return true
       }
     }
   }
