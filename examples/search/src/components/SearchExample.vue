@@ -44,7 +44,6 @@
 
 <style scoped>
   .table{
-    width: 40%;
     margin: auto;
   }
   .search{

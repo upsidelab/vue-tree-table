@@ -11,6 +11,12 @@ There are three things you can customize in vue tree table:
 
 It can be done via vue slots. If you don't know how vue slots work you probably want to read [this](https://vuejs.org/v2/guide/components-slots.html)
 
+
+::: warning
+  Upon table creation we are enriching the table-data with uuids for each node/leaf. If you want to create nodes/leafs
+  dynamically make sure you add the uuid yourself.
+:::
+
 ### Column Header Customization
 In order to customize the column header you need to provide the tree table component with headerTemplate slot
 

@@ -5,7 +5,18 @@ module.exports = {
       sidebar: [
           'guide/installation',
           'guide/',
-          'guide/customization'
+          'guide/customization',
+          {
+            title: 'Examples',
+            collapsable: false,
+            children: [
+              'guide/examples/menu',
+              'guide/examples/pagination',
+              'guide/examples/search',
+              'guide/examples/sorting',
+              'guide/examples/food_calculator'
+            ]
+          }
       ]
   }
 }

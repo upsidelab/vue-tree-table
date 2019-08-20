@@ -75,7 +75,6 @@
 
 <style scoped>
     .table{
-        width: 70%;
         margin: auto;
     }
 
