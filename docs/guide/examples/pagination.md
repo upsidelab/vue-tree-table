@@ -1,3 +1,19 @@
+---
+title: Pagination
+---
+
+# Pagination example
+
+If you need to add pagination to your table here's an example how you can achieve this.
+<br />
+<br />
+
+<PaginationExampleComponent />
+
+
+What you've basically need to do is to create a separate pagination component which is going to modify table table-data.
+
+```
 <template>
   <div>
     <tree-table
@@ -82,3 +98,4 @@
   }
 
 </style>
+```

@@ -68,8 +68,6 @@ of columns in wanted order. Column definition should have to attributes:
 * **id**: The indicator of an value that should be displayed in given column. For example if the id is name, for each 
 row the name attribute of the row object is going to be displayed.
 
-
-
 If you want to customize the table take a look at [customization section](/guide/customization)
 
 

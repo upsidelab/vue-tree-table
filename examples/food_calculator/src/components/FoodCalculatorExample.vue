@@ -75,12 +75,11 @@
 
 <style scoped>
     .table{
-        width: 70%;
         margin: auto;
     }
 
     .add-button{
-        width: 70%;
+        width: 95%;
         margin: auto;
         text-align: right;
         color: green;
