@@ -47,8 +47,7 @@
     margin: auto;
   }
   .search{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: -1rem;
     margin-bottom: 1rem;
     width: 40%;
     text-align: right;

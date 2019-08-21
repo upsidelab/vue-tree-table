@@ -79,7 +79,7 @@
     }
 
     .add-button{
-        width: 70%;
+        width: 95%;
         margin: auto;
         text-align: right;
         color: green;
