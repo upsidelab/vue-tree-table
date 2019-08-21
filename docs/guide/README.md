@@ -4,6 +4,10 @@ title: Quick Start
 
 # Quick start
 
+Vue-tree-table-component is a customizable solution for fast creation of components containing tree structure - most of all tree tables!
+
+For installation instruction see: [installation](/guide/installation)
+
 In order to use the VueTreeTable component you just have to import it an pass two props:
 * **table-data** - an array of objects that are to be presented in the tabe
 * **columns** - an array which will specify the table's columns
@@ -19,7 +23,7 @@ Let's take a look at simple example:
 </template>
 
 <script>
-  import TreeTable from '../../../tree-table/src/components/TreeTable'
+  import TreeTable from 'vue-tree-table-component'
 
   export default {
     name: 'DefaultTableTree',
