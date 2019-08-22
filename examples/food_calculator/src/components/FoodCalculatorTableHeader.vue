@@ -24,8 +24,6 @@
 </script>
 
 <style scoped>
-  @import "../../../../tree-table/src/components/common.css";
-
   .header{
     text-transform: uppercase;
     font-weight: bold;

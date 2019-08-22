@@ -1,10 +1,23 @@
 {
-  "name": "vue-tree-table",
+  "name": "vue-tree-table-component",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/vue-tree-table.common.js",
+  "unpkg": "dist/vue-tree-table.umd.js",
+  "module": "src/package.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/upsidelab/vue-tree-table"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-lib": "vue-cli-service build --target lib --name vue-tree-table ./src/package.js",
     "lint": "./node_modules/.bin/eslint --ext .js,.vue src",
     "lint-fix": "./node_modules/.bin/eslint --fix --ext .js,.vue src",
     "test:unit": "vue-cli-service test:unit"

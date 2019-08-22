@@ -38,8 +38,6 @@
 </script>
 
 <style scoped>
-  @import "../../../../tree-table/src/components/common.css";
-
   .row:hover{
       background-color: #EEE2DF;
   }

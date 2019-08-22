@@ -57,8 +57,6 @@
 </script>
 
 <style scoped>
-    @import "../../../../tree-table/src/components/common.css";
-
     input {
         width: 60px;
         display: inline-flex;

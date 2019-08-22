@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import TreeTable from '../../../../tree-table/src/package'
+  import TreeTable from 'vue-tree-table'
   import {tableData, columns} from '../resources/data'
 
   export default {

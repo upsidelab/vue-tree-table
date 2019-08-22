@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import TreeTable from '../../../../tree-table/src/package'
+    import TreeTable from 'vue-tree-table-component'
     import data from '../resources/data'
     import FoodCalculatorNode from "./FoodCalculatorNode";
     import FoodCalculatorLeaf from "./FoodCalculatorLeaf";

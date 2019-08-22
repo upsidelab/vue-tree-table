@@ -92,8 +92,6 @@
 </script>
 
 <style scoped>
-  @import "../../../../tree-table/src/components/common.css";
-
   .open-button {
     margin-right: 0.25rem;
     margin-left: -0.5rem;

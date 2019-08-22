@@ -128,8 +128,6 @@
 </script>
 
 <style scoped>
-    @import "../../../../tree-table/src/components/common.css";
-
     input {
         border: none;
         width: 100%;
