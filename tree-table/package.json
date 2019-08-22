@@ -1,5 +1,5 @@
 {
-  "name": "vue-tree-table",
+  "name": "vue-tree-table-component",
   "version": "0.1.0",
   "main": "dist/vue-tree-table.common.js",
   "unpkg": "dist/vue-tree-table.umd.js",

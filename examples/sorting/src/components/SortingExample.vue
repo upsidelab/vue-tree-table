@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import TreeTable from 'vue-tree-table'
+    import TreeTable from 'vue-tree-table-component'
     import SortingNode from './SortingNode'
     import SortingHeader from "./SortingHeader";
     import data from '../resources/data'

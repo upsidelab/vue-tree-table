@@ -11,7 +11,7 @@
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-uuid": "^1.1.1",
-    "vue-tree-table": "file:../../tree-table"
+    "vue-tree-table-component": "0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

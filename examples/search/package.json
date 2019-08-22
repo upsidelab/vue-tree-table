@@ -12,7 +12,7 @@
     "core-js": "^2.6.5",
     "debounce": "^1.2.0",
     "vue": "^2.6.10",
-    "vue-tree-table": "file:../../tree-table"
+    "vue-tree-table-component": "0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

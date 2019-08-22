@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import TreeTable from 'vue-tree-table'
+  import TreeTable from 'vue-tree-table-component'
   import {tableData, columns} from '../resources/data'
   import SearchNode from './SearchNode'
   import Vue from 'vue'

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import { TreeDefaultLeaf } from 'vue-tree-table'
+  import { TreeDefaultLeaf } from 'vue-tree-table-component'
 
   export default {
     name: 'SearchLeaf',
