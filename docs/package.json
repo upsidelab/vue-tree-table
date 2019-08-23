@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "vuepress": "^1.0.3",
-    "vue-uuid": "^1.1.1"
+    "vue-uuid": "^1.1.1",
+    "vue-tree-table-component": "0.1.0"
   }
 }
