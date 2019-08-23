@@ -65,6 +65,8 @@ Let's take a look at simple example:
 
 ## Full documentation
 
+You can find whole documentation with examples [here](https://naughty-hugle-cca02d.netlify.com/)
+
 ## Contributing
 
 We're always open for contributions. If you'd like to get involved, contact us at grzegorz.tluszcz@upsidelab.io.
