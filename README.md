@@ -24,7 +24,7 @@ In order to use the VueTreeTable component you just have to import it an pass tw
 
 Let's take a look at simple example: 
 
-```
+```html
 <template>
   <tree-table
           class="table"
